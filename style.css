@@ -200,16 +200,7 @@ body.loaded {
     margin: 0.5rem 0;
     font-size: 0.9rem;
 }
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .cta-button {
+.cta-button {
     display: inline-block;
     margin-top: 2rem;
     padding: 1rem 2.5rem;
@@ -226,4 +217,13 @@ body.loaded {
 .cta-button:hover {
     background: #cc0000;
 }
-}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
