@@ -24,28 +24,28 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 50px;
-    max-width: 1600px;
+    padding: 30px 80px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 
 .logo {
-    font-size: 2.5em;
+    font-size: 3em;
     font-weight: 700;
     color: #00cc99;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
 .nav-links {
     display: flex;
-    gap: 35px;
+    gap: 50px;
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: 600;
     transition: color 0.3s, transform 0.2s;
     position: relative;
@@ -73,71 +73,79 @@ nav {
 
 .coins-hero, .coin-sets-hero {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
-    border-bottom: 2px solid #00cc99;
+    padding: 120px 20px;
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(42, 42, 62, 0.8)), url('https://picsum.photos/1920/600?random=0');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid #00cc99;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .coins-hero h1, .coin-sets-hero h1 {
-    font-size: 3.5em;
-    margin-bottom: 20px;
+    font-size: 4.5em;
+    margin-bottom: 25px;
     color: #00cc99;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 10px rgba(0, 204, 153, 0.3);
+    letter-spacing: 3px;
+    text-shadow: 0 3px 15px rgba(0, 204, 153, 0.4);
 }
 
 .subtitle {
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: #d0d0d0;
+    margin-bottom: 40px;
 }
 
 .coins {
-    padding: 60px 20px;
+    padding: 80px 20px;
 }
 
 .coin-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    max-width: 1600px;
-    margin: 0 auto 50px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+    max-width: 1920px;
+    margin: 0 auto 60px;
 }
 
 .coin-card {
     background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
-    padding: 35px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 25px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid rgba(0, 204, 153, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .coin-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .coin-header {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .coin-card h3 {
-    font-size: 1.8em;
+    font-size: 2em;
     color: #00cc99;
 }
 
 .coin-card .price {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    margin-bottom: 15px;
     color: #fff;
     font-weight: 600;
 }
 
 .coin-card .change {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1.4em;
+    margin-bottom: 25px;
 }
 
 .coin-card .positive {
@@ -149,94 +157,100 @@ nav {
 }
 
 .cta {
-    display: block;
-    padding: 20px 40px;
+    display: inline-block;
+    padding: 25px 50px;
     background: linear-gradient(90deg, #00cc99, #00b386);
     color: #fff;
     text-decoration: none;
-    border-radius: 30px;
-    font-size: 1.3em;
+    border-radius: 35px;
+    font-size: 1.5em;
     font-weight: 700;
-    box-shadow: 0 5px 20px rgba(0, 204, 153, 0.5);
+    box-shadow: 0 5px 25px rgba(0, 204, 153, 0.5);
     transition: transform 0.3s, box-shadow 0.3s;
-    margin: 0 auto;
-    width: fit-content;
     text-transform: uppercase;
 }
 
 .cta:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 204, 153, 0.7);
+    box-shadow: 0 15px 40px rgba(0, 204, 153, 0.7);
 }
 
 .error {
-    font-size: 1.4em;
+    font-size: 1.6em;
     color: #ff4444;
     text-align: center;
 }
 
 .coin-sets {
-    padding: 60px 20px;
+    padding: 80px 20px;
     background: #1a1a2e;
 }
 
 .set-tier {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
+.tier-header {
+    background: linear-gradient(rgba(26, 26, 46, 0.7), rgba(26, 26, 46, 0.7));
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
 .set-tier h2 {
-    font-size: 2.5em;
+    font-size: 3em;
     color: #00cc99;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .tier-desc {
-    font-size: 1.3em;
+    font-size: 1.6em;
     color: #d0d0d0;
-    margin-bottom: 30px;
 }
 
 .set-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    max-width: 1600px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 
 .set-card {
     background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
-    padding: 35px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 25px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     border: 1px solid rgba(0, 204, 153, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
 }
 
 .set-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
 .set-card h3 {
-    font-size: 1.8em;
+    font-size: 2em;
     color: #00cc99;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .set-card p {
-    font-size: 1.2em;
+    font-size: 1.4em;
     color: #d0d0d0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .set-card .performance {
-    font-size: 1.1em;
-    margin-bottom: 20px;
+    font-size: 1.3em;
+    margin-bottom: 25px;
 }
 
 .set-card .positive {
@@ -249,31 +263,31 @@ nav {
 
 .set-cta {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 15px 30px;
     background: linear-gradient(90deg, #00cc99, #00b386);
     color: #fff;
     text-decoration: none;
     border-radius: 25px;
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-weight: 600;
     box-shadow: 0 5px 15px rgba(0, 204, 153, 0.4);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .set-cta:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 204, 153, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 204, 153, 0.6);
 }
 
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     background: #0f0f1a;
-    border-top: 2px solid #00cc99;
+    border-top: 3px solid #00cc99;
 }
 
 footer p {
-    font-size: 1.1em;
+    font-size: 1.3em;
 }
 
 footer a {
@@ -288,7 +302,7 @@ footer a:hover {
 
 @media (max-width: 768px) {
     nav {
-        padding: 20px 25px;
+        padding: 20px 30px;
     }
 
     .logo {
@@ -297,20 +311,24 @@ footer a:hover {
 
     .nav-links {
         flex-direction: column;
-        gap: 20px;
+        gap: 25px;
         padding: 10px 0;
     }
 
     .nav-links a {
-        font-size: 1.1em;
+        font-size: 1.2em;
+    }
+
+    .coins-hero, .coin-sets-hero {
+        padding: 80px 20px;
     }
 
     .coins-hero h1, .coin-sets-hero h1 {
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     .subtitle {
-        font-size: 1.2em;
+        font-size: 1.4em;
     }
 
     .coin-grid, .set-grid {
@@ -318,36 +336,40 @@ footer a:hover {
     }
 
     .coin-card, .set-card {
-        padding: 25px;
+        padding: 30px;
     }
 
     .coin-card h3, .set-card h3 {
-        font-size: 1.5em;
+        font-size: 1.6em;
     }
 
     .coin-card .price, .set-card p {
-        font-size: 1.1em;
+        font-size: 1.2em;
     }
 
     .coin-card .change, .set-card .performance {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     .cta {
         padding: 15px 30px;
-        font-size: 1.2em;
+        font-size: 1.3em;
     }
 
     .set-cta {
-        padding: 10px 20px;
-        font-size: 1em;
+        padding: 12px 25px;
+        font-size: 1.2em;
     }
 
     .set-tier h2 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .tier-desc {
-        font-size: 1.1em;
+        font-size: 1.3em;
     }
-}
+
+    .tier-header {
+        padding: 40px 20px;
+    }
+    }
