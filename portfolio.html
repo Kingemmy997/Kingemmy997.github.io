@@ -8,7 +8,7 @@
     <meta name="description" content="Explore EC Studios' portfolio featuring professional graphics design and programming projects.">
     <meta name="keywords" content="graphics design, programming, portfolio, EC Studios">
     <meta name="author" content="EC Studios">
-    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/007bff/fff?text=EC">
+    <link rel="icon" type="image/png" href="https://picsum.photos/32/32?grayscale">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -27,15 +27,15 @@
     <section class="portfolio">
         <h2>Our Work</h2>
         <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400/007bff/fff?text=Graphic+Design+1" alt="Graphic Design 1">
+            <img src="https://picsum.photos/600/400?random=1" alt="Graphic Design 1">
             <p>Logo Design for a Tech Startup</p>
         </div>
         <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400/ff6f61/fff?text=Poster+Design+1" alt="Poster Design 1">
+            <img src="https://picsum.photos/600/400?random=2" alt="Poster Design 1">
             <p>Promotional Poster for an Event</p>
         </div>
         <div class="portfolio-item">
-            <img src="https://via.placeholder.com/600x400/000/fff?text=Custom+Image+1" alt="Custom Image 1">
+            <img src="https://picsum.photos/600/400?random=3" alt="Custom Image 1">
             <p>Custom Illustration for a Client</p>
         </div>
     </section>
@@ -47,7 +47,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.add('loaded');
         });
-        document.querySelector('form').addEventListener('submit', (e) => {
+        document.querySelector('form')?.addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Form submitted! We’ll get back to you soon.');
         });
