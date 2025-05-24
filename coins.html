@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wealth - Coins</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Crypto Wealth</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coins.html">Coins</a></li>
+                <li><a href="coin-sets.html">Coin Sets</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="coins">
+            <h1>Explore Top Cryptocurrencies</h1>
+            <p>Real-time prices powered by CoinGecko</p>
+            <div class="coin-grid"></div>
+            <a href="contact.html" class="cta">Start Investing</a>
+        </section>
+    </main>
+    <footer>
+        <p>Trusted by 2M+ users | FIU-Compliant | © 2025 Crypto Wealth</p>
+        <p>Follow us: <a href="https://x.com/Kingpaul997?t=HlAPhp7qkbvw6yrc40U3oQ&s=09">X</a></p>
+    </footer>
+    <script>
+        fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,solana')
+            .then(response => response.json())
+            .then(data => {
+                const grid = document.querySelector('.coin-grid');
+                grid.innerHTML = '';
+                data.forEach(coin => {
+                    const div = document.createElement('div');
+                    div.className = 'coin';
+                    div.innerHTML = `
+                        <h3>${coin.name} (${coin.symbol.toUpperCase()})</h3>
+                        <p>Price: $${coin.current_price.toFixed(2)}</p>
+                        <p>24h Change: ${coin.price_change_percentage_24h.toFixed(2)}%</p>
+                    `;
+                    grid.appendChild(div);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching prices:', error);
+                const grid = document.querySelector('.coin-grid');
+                grid.innerHTML = '<p>Unable to load prices. Please try again later.</p>';
+            });
+    </script>
+</body>
+</html>
