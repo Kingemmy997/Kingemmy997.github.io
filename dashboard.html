@@ -25,14 +25,49 @@
         <section class="dashboard-hero">
             <h1>Your Portfolio Overview</h1>
             <p class="subtitle">Manage your investments in real-time</p>
+            <button class="cta" id="logout-btn">Log Out</button>
         </section>
         <section class="dashboard">
             <div class="dashboard-grid" id="dashboard-grid"></div>
-            <div class="portfolio">
+            <div class="portfolio" id="user-portfolio">
                 <h2>Your Holdings</h2>
-                <p>0.5 BTC ($30,000) | 1.2 ETH ($3,600) | 10 SOL ($1,500)</p>
-                <p>Total Value: $35,100</p>
-                <a href="login.html" class="cta">Manage Portfolio</a>
+                <p id="holdings"></p>
+                <p id="total-value"></p>
+                <p id="balance">Balance: $0.00</p>
+            </div>
+            <div class="actions">
+                <h2>Actions</h2>
+                <div class="action-grid">
+                    <div class="action-card">
+                        <h3>Buy Investment</h3>
+                        <form id="buy-form">
+                            <select id="buy-coin">
+                                <option value="bitcoin">Bitcoin (BTC)</option>
+                                <option value="ethereum">Ethereum (ETH)</option>
+                                <option value="solana">Solana (SOL)</option>
+                            </select>
+                            <input type="number" id="buy-amount" placeholder="Amount (USD)" min="1" required>
+                            <button type="submit" class="action-cta">Buy</button>
+                        </form>
+                    </div>
+                    <div class="action-card">
+                        <h3>Transfer</h3>
+                        <form id="transfer-form">
+                            <select id="transfer-coin">
+                                <option value="bitcoin">Bitcoin (BTC)</option>
+                                <option value="ethereum">Ethereum (ETH)</option>
+                                <option value="solana">Solana (SOL)</option>
+                            </select>
+                            <input type="text" id="transfer-address" placeholder="Wallet Address" required>
+                            <input type="number" id="transfer-amount" placeholder="Amount (Coin)" min="0.01" step="0.01" required>
+                            <button type="submit" class="action-cta">Transfer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="history">
+                <h2>Transaction History</h2>
+                <div id="transaction-history"></div>
             </div>
         </section>
     </main>
@@ -41,90 +76,6 @@
         <p>Follow us: <a href="https://x.com/Kingpaul997?t=HlAPhp7qkbvw6yrc40U3oQ&s=09">X</a></p>
         <a href="https://wa.me/2349035924358" class="chat-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat" width="50"></a>
     </footer>
-    <script>
-        const coins = ['bitcoin', 'ethereum', 'solana'];
-        const priceData = {};
-        const chartInstances = {};
-        coins.forEach(coin => priceData[coin] = []);
-
-        function fetchPrices() {
-            fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coins.join(',')}`)
-                .then(response => response.json())
-                .then(data => {
-                    const grid = document.getElementById('dashboard-grid');
-                    grid.innerHTML = '';
-                    data.forEach(coin => {
-                        if (priceData[coin.id].length >= 10) priceData[coin.id].shift();
-                        priceData[coin.id].push({ price: coin.current_price, time: new Date().toLocaleTimeString() });
-
-                        const div = document.createElement('div');
-                        div.className = 'coin-card';
-                        div.innerHTML = `
-                            <div class="coin-header">
-                                <h3>${coin.name} (${coin.symbol.toUpperCase()})</h3>
-                            </div>
-                            <p class="price">$${coin.current_price.toFixed(2)}</p>
-                            <p class="change ${coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}">
-                                24h: ${coin.price_change_percentage_24h.toFixed(2)}%
-                            </p>
-                            <canvas id="chart-${coin.id}" height="120"></canvas>
-                        `;
-                        grid.appendChild(div);
-
-                        const ctx = document.getElementById(`chart-${coin.id}`).getContext('2d');
-                        const gradient = ctx.createLinearGradient(0, 0, 0, 120);
-                        gradient.addColorStop(0, 'rgba(0, 204, 153, 0.4)');
-                        gradient.addColorStop(1, 'rgba(0, 204, 153, 0)');
-
-                        if (chartInstances[coin.id]) {
-                            chartInstances[coin.id].data.labels = priceData[coin.id].map(d => d.time);
-                            chartInstances[coin.id].data.datasets[0].data = priceData[coin.id].map(d => d.price);
-                            chartInstances[coin.id].update();
-                        } else {
-                            chartInstances[coin.id] = new Chart(ctx, {
-                                type: 'line',
-                                data: {
-                                    labels: priceData[coin.id].map(d => d.time),
-                                    datasets: [{
-                                        label: '',
-                                        data: priceData[coin.id].map(d => d.price),
-                                        borderColor: '#00cc99',
-                                        backgroundColor: gradient,
-                                        borderWidth: 2,
-                                        fill: true,
-                                        tension: 0.4,
-                                        pointRadius: 0,
-                                        pointHoverRadius: 5
-                                    }]
-                                },
-                                options: {
-                                    plugins: {
-                                        legend: { display: false },
-                                        tooltip: {
-                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                            titleFont: { size: 12 },
-                                            bodyFont: { size: 12 },
-                                            callbacks: { label: (context) => `$${context.parsed.y.toFixed(2)}` }
-                                        }
-                                    },
-                                    scales: {
-                                        x: { ticks: { color: '#d0d0d0', font: { size: 10 }, maxRotation: 0 }, grid: { display: false } },
-                                        y: { ticks: { color: '#d0d0d0', font: { size: 10 } }, grid: { color: 'rgba(255, 255, 255, 0.1)' } }
-                                    },
-                                    animation: { duration: 1000, easing: 'easeInOutQuad' }
-                                }
-                            });
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching prices:', error);
-                    document.getElementById('dashboard-grid').innerHTML = '<p class="error">Unable to load prices. Please try again later.</p>';
-                });
-        }
-
-        fetchPrices();
-        setInterval(fetchPrices, 30000);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
