@@ -1,4 +1,10 @@
-// Price Fetching and Charting Function (for coins.html and dashboard.html)
+// User Database (Hardcoded for Demo)
+const users = {
+    'user@crypto.com': { password: 'password123', name: 'John Doe', holdings: { 'bitcoin': 0.5, 'ethereum': 1.2, 'solana': 10 }, balance: 1000, transactions: [] },
+    'emma@crypto.com': { password: 'emma123', name: 'Emma Paul', holdings: { 'bitcoin': 1.0, 'ethereum': 0.5, 'solana': 5 }, balance: 500, transactions: [] }
+};
+
+// Price Fetching and Charting
 const coins = {
     'coins': ['bitcoin', 'ethereum', 'solana', 'binancecoin', 'ripple', 'cardano', 'dogecoin', 'shiba-inu', 'polkadot', 'avalanche-2'],
     'dashboard': ['bitcoin', 'ethereum', 'solana']
@@ -80,6 +86,7 @@ function fetchPrices(page, gridId) {
                     });
                 }
             });
+            updateDashboard(); // Update dashboard after price fetch
         })
         .catch(error => {
             console.error(`Error fetching prices for ${page}:`, error);
@@ -93,7 +100,7 @@ function startPriceUpdates(page, gridId) {
     setInterval(() => fetchPrices(page, gridId), 30000);
 }
 
-// News Ticker Function (for coins.html)
+// News Ticker
 function fetchNews() {
     fetch('https://api.coingecko.com/api/v3/news')
         .then(response => response.json())
@@ -107,7 +114,7 @@ function fetchNews() {
         });
 }
 
-// Login Form Handler (for login.html)
+// Login Form Handler
 function setupLoginForm() {
     const form = document.getElementById('login-form');
     if (form) {
@@ -115,11 +122,101 @@ function setupLoginForm() {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            if (email === 'user@crypto.com' && password === 'password123') {
+            if (users[email] && users[email].password === password) {
+                localStorage.setItem('currentUser', JSON.stringify({ email, name: users[email].name, holdings: users[email].holdings, balance: users[email].balance, transactions: users[email].transactions }));
                 window.location.href = 'dashboard.html';
             } else {
-                alert('Invalid email or password. Try user@crypto.com / password123');
+                alert('Invalid email or password.');
             }
+        });
+    }
+}
+
+// Dashboard Updates
+function updateDashboard() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (user && document.getElementById('user-portfolio')) {
+        const holdings = user.holdings;
+        let holdingsText = '';
+        let totalValue = 0;
+        for (const [coin, amount] of Object.entries(holdings)) {
+            const price = priceData[coin]?.[priceData[coin].length - 1]?.price || 0;
+            const value = amount * price;
+            totalValue += value;
+            holdingsText += `${amount} ${coin.toUpperCase()} ($${value.toFixed(2)}) | `;
+        }
+        document.getElementById('holdings').textContent = holdingsText.slice(0, -3);
+        document.getElementById('total-value').textContent = `Total Value: $${totalValue.toFixed(2)}`;
+        document.getElementById('balance').textContent = `Balance: $${user.balance.toFixed(2)}`;
+
+        // Update Transaction History
+        const historyDiv = document.getElementById('transaction-history');
+        historyDiv.innerHTML = user.transactions.length ? user.transactions.map(tx => `<p>${tx}</p>`).join('') : '<p>No transactions yet.</p>';
+    }
+}
+
+// Buy Investment
+function setupBuyForm() {
+    const form = document.getElementById('buy-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            const coin = document.getElementById('buy-coin').value;
+            const amountUSD = parseFloat(document.getElementById('buy-amount').value);
+            const price = priceData[coin]?.[priceData[coin].length - 1]?.price || 0;
+            const coinAmount = amountUSD / price;
+
+            if (user.balance >= amountUSD) {
+                user.balance -= amountUSD;
+                user.holdings[coin] = (user.holdings[coin] || 0) + coinAmount;
+                user.transactions.push(`Bought ${coinAmount.toFixed(4)} ${coin.toUpperCase()} for $${amountUSD.toFixed(2)} at ${new Date().toLocaleString()}`);
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                updateDashboard();
+                alert('Purchase successful!');
+            } else {
+                alert('Insufficient balance.');
+            }
+        });
+    }
+}
+
+// Transfer
+function setupTransferForm() {
+    const form = document.getElementById('transfer-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            const coin = document.getElementById('transfer-coin').value;
+            const address = document.getElementById('transfer-address').value;
+            const amount = parseFloat(document.getElementById('transfer-amount').value);
+
+            if (user.holdings[coin] >= amount) {
+                user.holdings[coin] -= amount;
+                user.transactions.push(`Transferred ${amount.toFixed(4)} ${coin.toUpperCase()} to ${address} at ${new Date().toLocaleString()}`);
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                updateDashboard();
+                alert('Transfer successful!');
+            } else {
+                alert('Insufficient holdings.');
+            }
+        });
+    }
+}
+
+// Contact Form Handler
+function setupContactForm() {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            console.log(`Contact Form Submission: Name: ${name}, Email: ${email}, Message: ${message}`);
+            alert('Message sent! We’ll get back to you soon.');
+            form.reset();
         });
     }
 }
@@ -128,10 +225,20 @@ function setupLoginForm() {
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.coin-grid')) {
         startPriceUpdates('coins', 'coin-grid');
-        setInterval(fetchNews, 60000); // Update news every minute
+        setInterval(fetchNews, 60000);
     }
     if (document.getElementById('dashboard-grid')) {
         startPriceUpdates('dashboard', 'dashboard-grid');
+        updateDashboard();
+        setupBuyForm();
+        setupTransferForm();
     }
     setupLoginForm();
+    setupContactForm();
+
+    // Logout Button
+    document.getElementById('logout-btn')?.addEventListener('click', () => {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+    });
 });
