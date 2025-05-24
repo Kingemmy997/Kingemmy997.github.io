@@ -71,21 +71,21 @@ nav {
     width: 100%;
 }
 
-.coins-hero, .coin-sets-hero {
+.hero, .login-hero, .dashboard-hero, .coin-sets-hero {
     text-align: center;
     padding: 120px 20px;
-    background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(42, 42, 62, 0.8)), url('https://picsum.photos/1920/600?random=0');
+    background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(42, 42, 62, 0.8)), url('https://picsum.photos/1920/600?random=0');
     background-size: cover;
     background-position: center;
     border-bottom: 3px solid #00cc99;
 }
 
-.hero-content {
+.hero-content, .login-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.coins-hero h1, .coin-sets-hero h1 {
+.hero h1, .login-hero h1, .dashboard-hero h1, .coin-sets-hero h1 {
     font-size: 4.5em;
     margin-bottom: 25px;
     color: #00cc99;
@@ -100,11 +100,11 @@ nav {
     margin-bottom: 40px;
 }
 
-.coins {
+.coins, .dashboard, .coin-sets {
     padding: 80px 20px;
 }
 
-.coin-grid {
+.coin-grid, .dashboard-grid, .set-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 50px;
@@ -156,6 +156,43 @@ nav {
     color: #ff4444;
 }
 
+.login-container {
+    background: rgba(42, 42, 62, 0.9);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #d0d0d0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #2a2a3e;
+    color: #fff;
+    font-size: 1.2em;
+    transition: box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    box-shadow: 0 0 15px rgba(0, 204, 153, 0.5);
+    outline: none;
+}
+
 .cta {
     display: inline-block;
     padding: 25px 50px;
@@ -175,15 +212,70 @@ nav {
     box-shadow: 0 15px 40px rgba(0, 204, 153, 0.7);
 }
 
+.signup-text, .secure-text {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #d0d0d0;
+}
+
+.signup-link {
+    color: #00cc99;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
+.why-choose {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.why-choose h2 {
+    font-size: 3.5em;
+    color: #00cc99;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature {
+    background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+}
+
+.feature h3 {
+    font-size: 2em;
+    color: #00cc99;
+    margin-bottom: 15px;
+}
+
+.feature p {
+    font-size: 1.4em;
+    color: #d0d0d0;
+}
+
 .error {
     font-size: 1.6em;
     color: #ff4444;
     text-align: center;
-}
-
-.coin-sets {
-    padding: 80px 20px;
-    background: #1a1a2e;
 }
 
 .set-tier {
@@ -279,11 +371,113 @@ nav {
     box-shadow: 0 10px 30px rgba(0, 204, 153, 0.6);
 }
 
+.portfolio {
+    background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio h2 {
+    font-size: 2.5em;
+    color: #00cc99;
+    margin-bottom: 20px;
+}
+
+.portfolio p {
+    font-size: 1.5em;
+    color: #d0d0d0;
+    margin-bottom: 15px;
+}
+
+.testimonials {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 3.5em;
+    color: #00cc99;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    background: linear-gradient(145deg, #2a2a3e, #1a1a2e);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s;
+}
+
+.testimonial:hover {
+    transform: translateY(-10px);
+}
+
+.testimonial p {
+    font-size: 1.4em;
+    color: #d0d0d0;
+    line-height: 1.6;
+}
+
+.news-ticker {
+    padding: 40px 20px;
+    background: #1a1a2e;
+    text-align: center;
+}
+
+.news-ticker h2 {
+    font-size: 2.5em;
+    color: #00cc99;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.ticker {
+    font-size: 1.3em;
+    color: #d0d0d0;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.ticker span {
+    margin-right: 30px;
+    display: inline-block;
+    animation: ticker 15s linear infinite;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
 footer {
     text-align: center;
     padding: 40px;
     background: #0f0f1a;
     border-top: 3px solid #00cc99;
+    position: relative;
 }
 
 footer p {
@@ -319,11 +513,11 @@ footer a:hover {
         font-size: 1.2em;
     }
 
-    .coins-hero, .coin-sets-hero {
+    .hero, .login-hero, .dashboard-hero, .coin-sets-hero {
         padding: 80px 20px;
     }
 
-    .coins-hero h1, .coin-sets-hero h1 {
+    .hero h1, .login-hero h1, .dashboard-hero h1, .coin-sets-hero h1 {
         font-size: 3em;
     }
 
@@ -331,7 +525,7 @@ footer a:hover {
         font-size: 1.4em;
     }
 
-    .coin-grid, .set-grid {
+    .coin-grid, .dashboard-grid, .set-grid {
         grid-template-columns: 1fr;
     }
 
@@ -372,4 +566,41 @@ footer a:hover {
     .tier-header {
         padding: 40px 20px;
     }
+
+    .feature {
+        padding: 30px;
     }
+
+    .feature h3 {
+        font-size: 1.6em;
+    }
+
+    .feature p {
+        font-size: 1.2em;
+    }
+
+    .portfolio h2 {
+        font-size: 2em;
+    }
+
+    .portfolio p {
+        font-size: 1.2em;
+    }
+
+    .testimonials h2 {
+        font-size: 2.5em;
+    }
+
+    .news-ticker h2 {
+        font-size: 2em;
+    }
+
+    .ticker {
+        font-size: 1.1em;
+    }
+
+    .chat-icon {
+        bottom: 10px;
+        right: 10px;
+    }
+}
