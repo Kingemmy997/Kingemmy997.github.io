@@ -1,9 +1,116 @@
-.login, .dashboard, .coin-sets {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+header {
+    background: #0f0f1a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #00cc99;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00cc99;
+}
+
+.hero, .coins, .coin-sets, .login, .dashboard, .contact {
     padding: 40px 20px;
     text-align: center;
 }
 
-.login form {
+.hero {
+    background: url('https://picsum.photos/1200/400?crypto') no-repeat center/cover;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.trust {
+    font-size: 0.9em;
+    color: #00cc99;
+    margin-top: 15px;
+}
+
+.cta {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #00cc99;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.cta:hover {
+    background: #00b386;
+}
+
+.features, .coin-grid, .set-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-grid div, .coin-grid div, .set-grid div {
+    background: #2a2a3e;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.feature-grid div:hover, .coin-grid div:hover, .set-grid div:hover {
+    transform: translateY(-5px);
+}
+
+.login form, .contact form {
     max-width: 400px;
     margin: 20px auto;
     display: flex;
@@ -11,9 +118,27 @@
     gap: 15px;
 }
 
+.login label, .contact label {
+    text-align: left;
+}
+
+.login input, .contact input, .contact textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2a2a3e;
+    color: #fff;
+}
+
 .login .signup-link {
     color: #00cc99;
     text-decoration: none;
+}
+
+.contact button {
+    width: fit-content;
+    margin: 0 auto;
 }
 
 .portfolio, .actions {
@@ -28,20 +153,28 @@
     margin: 10px;
 }
 
-.set-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.set-grid div {
-    background: #2a2a3e;
+footer {
+    text-align: center;
     padding: 20px;
-    border-radius: 8px;
-    transition: transform 0.3s;
+    background: #0f0f1a;
 }
 
-.set-grid div:hover {
-    transform: translateY(-5px);
+footer a {
+    color: #00cc99;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h1, .coins h1, .coin-sets h1, .login h1, .dashboard h1, .contact h1 {
+        font-size: 2em;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
 }
