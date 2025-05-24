@@ -22,13 +22,13 @@
         </nav>
     </header>
     <main>
+        <section class="coins-hero">
+            <h1>Explore the Crypto Market</h1>
+            <p class="subtitle">Track real-time prices for top cryptocurrencies</p>
+        </section>
         <section class="coins">
-            <div class="coins-header">
-                <h1>Explore Top Cryptocurrencies</h1>
-                <p class="subtitle">Real-time prices and trends powered by CoinGecko</p>
-            </div>
             <div class="coin-grid" id="coin-grid"></div>
-            <a href="contact.html" class="cta">Start Investing Now</a>
+            <a href="contact.html" class="cta">Start Trading Now</a>
         </section>
     </main>
     <footer>
@@ -48,11 +48,9 @@
                     const grid = document.getElementById('coin-grid');
                     grid.innerHTML = '';
                     data.forEach(coin => {
-                        // Update price data for charting
                         if (priceData[coin.id].length >= 10) priceData[coin.id].shift();
                         priceData[coin.id].push({ price: coin.current_price, time: new Date().toLocaleTimeString() });
 
-                        // Create coin card
                         const div = document.createElement('div');
                         div.className = 'coin-card';
                         div.innerHTML = `
@@ -63,13 +61,12 @@
                             <p class="change ${coin.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}">
                                 24h: ${coin.price_change_percentage_24h.toFixed(2)}%
                             </p>
-                            <canvas id="chart-${coin.id}" height="120"></canvas>
+                            <canvas id="chart-${coin.id}" height="100"></canvas>
                         `;
                         grid.appendChild(div);
 
-                        // Create or update chart
                         const ctx = document.getElementById(`chart-${coin.id}`).getContext('2d');
-                        const gradient = ctx.createLinearGradient(0, 0, 0, 120);
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 100);
                         gradient.addColorStop(0, 'rgba(0, 204, 153, 0.4)');
                         gradient.addColorStop(1, 'rgba(0, 204, 153, 0)');
 
@@ -98,26 +95,15 @@
                                     plugins: {
                                         legend: { display: false },
                                         tooltip: {
-                                            enabled: true,
                                             backgroundColor: 'rgba(0, 0, 0, 0.8)',
                                             titleFont: { size: 12 },
                                             bodyFont: { size: 12 },
-                                            callbacks: {
-                                                label: (context) => `$${context.parsed.y.toFixed(2)}`
-                                            }
+                                            callbacks: { label: (context) => `$${context.parsed.y.toFixed(2)}` }
                                         }
                                     },
                                     scales: {
-                                        x: {
-                                            display: true,
-                                            ticks: { color: '#d0d0d0', font: { size: 10 }, maxRotation: 0 },
-                                            grid: { display: false }
-                                        },
-                                        y: {
-                                            display: true,
-                                            ticks: { color: '#d0d0d0', font: { size: 10 } },
-                                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
-                                        }
+                                        x: { ticks: { color: '#d0d0d0', font: { size: 10 }, maxRotation: 0 }, grid: { display: false } },
+                                        y: { ticks: { color: '#d0d0d0', font: { size: 10 } }, grid: { color: 'rgba(255, 255, 255, 0.1)' } }
                                     },
                                     animation: { duration: 1000, easing: 'easeInOutQuad' }
                                 }
@@ -127,14 +113,12 @@
                 })
                 .catch(error => {
                     console.error('Error fetching prices:', error);
-                    const grid = document.getElementById('coin-grid');
-                    grid.innerHTML = '<p class="error">Unable to load prices. Please try again later.</p>';
+                    document.getElementById('coin-grid').innerHTML = '<p class="error">Unable to load prices. Please try again later.</p>';
                 });
         }
 
-        // Initial fetch and set interval for real-time updates
         fetchPrices();
-        setInterval(fetchPrices, 30000); // Update every 30 seconds
+        setInterval(fetchPrices, 30000);
     </script>
 </body>
 </html>
