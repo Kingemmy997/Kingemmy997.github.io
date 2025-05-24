@@ -45,17 +45,6 @@
         <p>Follow us: <a href="https://x.com/Kingpaul997?t=HlAPhp7qkbvw6yrc40U3oQ&s=09">X</a></p>
         <a href="https://wa.me/2349035924358" class="chat-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat" width="50"></a>
     </footer>
-    <script>
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            if (email === 'user@crypto.com' && password === 'password123') {
-                window.location.href = 'dashboard.html';
-            } else {
-                alert('Invalid email or password. Try user@crypto.com / password123');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
