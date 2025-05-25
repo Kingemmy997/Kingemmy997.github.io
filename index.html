@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Trade and invest in cryptocurrencies effortlessly. Buy, sell, and swap digital assets with ease and security.">
+    <meta name="description" content="Crypto Wealth - Trade & Invest in Crypto. Simplified. Real-time prices, secure wallets, and expert insights.">
     <title>Crypto Wealth - Trade & Invest in Crypto</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.png" type="image/png">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">CryptoPilot</a>
+                <a href="index.html" class="logo">Crypto Wealth</a>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="#features">Features</a></li>
@@ -26,7 +24,7 @@
                 </ul>
                 <div class="auth-buttons">
                     <a href="login.html" class="btn btn-transparent">Sign In</a>
-                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
                 </div>
                 <div class="hamburger">
                     <span></span>
@@ -45,13 +43,15 @@
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li> <li><a href="wallet.html">Wallet</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="wallet.html">Wallet</a></li>
             <li><a href="transactions.html">Transactions</a></li>
+            <li><a href="learn.html">Learn</a></li>
             <li><a href="settings.html">Settings</a></li>
         </ul>
         <div class="auth-buttons">
             <a href="login.html" class="btn btn-transparent">Sign In</a>
-            <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
         </div>
     </div>
 
@@ -59,281 +59,198 @@
         <section class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Trade & Invest in Crypto, Simplified.</h1>
-                    <p>Access 300+ cryptocurrencies with ease. Buy, sell, and manage your digital assets securely on CryptoPilot.</p>
+                    <h1>Secure Your Success with <span class="highlight">Smart Crypto Solutions</span></h1>
+                    <p>Join millions of users who trust our platform for real-time tracking, secure storage, and seamless transactions.</p>
                     <div class="hero-actions">
-                        <a href="signup.html" class="btn btn-primary">Get Started Now</a>
-                        <a href="#features" class="btn btn-secondary">Learn More</a>
+                        <a href="signup.html" class="btn btn-primary">Get Started</a>
+                        <a href="#" class="btn btn-secondary">Watch Video</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="images/crypto-orb.png" alt="Crypto Orb" loading="lazy">
+                    <img src="images/crypto-orb.png" alt="Crypto Wealth Orb">
                 </div>
             </div>
         </section>
 
-        <section class="crypto-carousel-section insights-section">
-            <div class="container">
-                <h2 class="text-center">Real-Time Crypto Prices</h2>
+        <section class="crypto-carousel-section">
+            <div class="container text-center">
+                <h2>Real-Time Crypto Prices</h2>
                 <div class="crypto-carousel-container">
-                    <div class="crypto-carousel">
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin" class="coin-icon">
-                                <span class="coin-name">Bitcoin</span>
-                                <span class="coin-symbol">BTC</span>
-                            </div>
-                            <div class="current-price">$67,500.23</div>
-                            <div class="price-change positive">+2.15% <img src="images/arrow-up.png" alt="up"></div>
-                        </div>
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum" class="coin-icon">
-                                <span class="coin-name">Ethereum</span>
-                                <span class="coin-symbol">ETH</span>
-                            </div>
-                            <div class="current-price">$3,820.75</div>
-                            <div class="price-change positive">+1.89% <img src="images/arrow-up.png" alt="up"></div>
-                        </div>
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" alt="Solana" class="coin-icon">
-                                <span class="coin-name">Solana</span>
-                                <span class="coin-symbol">SOL</span>
-                            </div>
-                            <div class="current-price">$165.10</div>
-                            <div class="price-change negative">-0.72% <img src="images/arrow-down.png" alt="down"></div>
-                        </div>
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/32/large/realio-network.png" alt="BNB" class="coin-icon">
-                                <span class="coin-name">BNB</span>
-                                <span class="coin-symbol">BNB</span>
-                            </div>
-                            <div class="current-price">$590.30</div>
-                            <div class="price-change positive">+0.95% <img src="images/arrow-up.png" alt="up"></div>
-                        </div>
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/11883/large/Polygon_blockchain_logo.png" alt="Polygon" class="coin-icon">
-                                <span class="coin-name">Polygon</span>
-                                <span class="coin-symbol">MATIC</span>
-                            </div>
-                            <div class="current-price">$0.85</div>
-                            <div class="price-change positive">+3.20% <img src="images/arrow-up.png" alt="up"></div>
-                        </div>
-                        <div class="crypto-card">
-                            <div class="coin-header">
-                                <img src="https://assets.coingecko.com/coins/images/13/large/usd-coin-stablecoin.png" alt="USD Coin" class="coin-icon">
-                                <span class="coin-name">USD Coin</span>
-                                <span class="coin-symbol">USDC</span>
-                            </div>
-                            <div class="current-price">$1.00</div>
-                            <div class="price-change positive">+0.01% <img src="images/arrow-up.png" alt="up"></div>
-                        </div>
+                    <div class="crypto-carousel" id="crypto-carousel">
+                        <div class="crypto-card">Loading...</div>
                     </div>
                     <div class="carousel-navigation">
-                        <button class="prev-btn">‹</button>
-                        <button class="next-btn">›</button>
+                        <button id="prevBtn">&lsaquo;</button>
+                        <button id="nextBtn">&rsaquo;</button>
                     </div>
-                    <div class="carousel-indicators">
+                    <div class="carousel-indicators" id="carousel-indicators">
                         </div>
                 </div>
             </div>
         </section>
 
-
         <section id="features" class="features-section">
-            <div class="container">
-                <h2 class="text-center">Why Choose CryptoPilot?</h2>
+            <div class="container text-center">
+                <h2>Powerful Features for Smart Crypto Management</h2>
                 <div class="features-grid">
-                    <div class="feature-card large-card">
-                        <span class="icon-placeholder">🛡️</span>
-                        <h3>Secure & Regulated</h3>
-                        <p>Your assets are protected with industry-leading security measures and strict regulatory compliance. We prioritize your safety above all else.</p>
-                    </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">🚀</span>
-                        <h3>Instant Trading</h3>
-                        <p>Buy and sell crypto in seconds with seamless transactions and competitive rates.</p>
-                    </div>
-                    <div class="feature-card small-card">
+                    <div class="feature-card">
                         <span class="icon-placeholder">📈</span>
-                        <h3>Advanced Charts</h3>
-                        <p>Track market trends with powerful, intuitive charting tools and real-time data.</p>
+                        <h3>Real-Time Market Insights</h3>
+                        <p>Stay ahead with live crypto prices, interactive charts, and in-depth market analysis.</p>
                     </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">🔄</span>
-                        <h3>Seamless Swaps</h3>
-                        <p>Easily swap between different cryptocurrencies directly within your portfolio.</p>
+                    <div class="feature-card">
+                        <span class="icon-placeholder">🔒</span>
+                        <h3>Secure & Private Wallets</h3>
+                        <p>Your assets are protected with industry-leading security measures and cold storage solutions.</p>
                     </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">📱</span>
-                        <h3>Mobile Friendly</h3>
-                        <p>Manage your portfolio on the go with our fully responsive web platform.</p>
+                    <div class="feature-card">
+                        <span class="icon-placeholder">⚡</span>
+                        <h3>Lightning-Fast Transactions</h3>
+                        <p>Experience quick and reliable deposits, withdrawals, and crypto-to-crypto exchanges.</p>
                     </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">👩‍💻</span>
-                        <h3>Dedicated Support</h3>
-                        <p>Our expert support team is available 24/7 to assist you with any queries.</p>
+                    <div class="feature-card large-card">
+                        <h3>Seamless API & Export</h3>
+                        <p>Integrate with third-party tools or export your transaction history for easy tax reporting and portfolio analysis.</p>
                     </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">💰</span>
-                        <h3>Flexible Deposits</h3>
-                        <p>Fund your account using various payment methods, including bank transfers and credit cards.</p>
+                    <div class="feature-card">
+                        <span class="icon-placeholder">🌍</span>
+                        <h3>Global Accessibility</h3>
+                        <p>Access your portfolio anywhere, anytime, with our responsive web and mobile applications.</p>
                     </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">🔑</span>
-                        <h3>Personalized Wallets</h3>
-                        <p>Get secure, individual wallets for each cryptocurrency you hold.</p>
-                    </div>
-                    <div class="feature-card small-card">
-                        <span class="icon-placeholder">📊</span>
-                        <h3>Auto-Invest Plans</h3>
-                        <p>Set up recurring investments to grow your portfolio passively over time.</p>
+                    <div class="feature-card">
+                        <span class="icon-placeholder">📞</span>
+                        <h3>24/7 Dedicated Support</h3>
+                        <p>Our expert team is always here to help you with any questions or issues.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="insights" class="insights-section">
-            <div class="container">
-                <h2 class="text-center">How It Works</h2>
+            <div class="container text-center">
+                <h2>Your Journey to Financial Freedom Starts Here</h2>
                 <div class="insights-grid">
                     <div class="insight-card">
                         <h3>1. Register & Verify</h3>
-                        <p>Sign up in minutes and complete our quick verification process to ensure a secure trading environment.</p>
-                        <a href="signup.html" class="read-more">Join Now &rarr;</a>
+                        <p>Sign up in minutes with our streamlined registration process and secure identity verification.</p>
+                        <a href="signup.html" class="read-more">Get Started &rarr;</a>
                     </div>
                     <div class="insight-card">
                         <h3>2. Deposit Funds</h3>
-                        <p>Fund your account using your preferred method: bank transfer, credit card, or existing crypto deposits.</p>
-                        <a href="wallet.html" class="read-more">Learn about Deposits &rarr;</a>
+                        <p>Easily deposit fiat or crypto into your secure Crypto Wealth wallet using various payment methods.</p>
+                        <a href="wallet.html" class="read-more">Deposit Now &rarr;</a>
                     </div>
                     <div class="insight-card">
                         <h3>3. Start Trading</h3>
-                        <p>Explore hundreds of cryptocurrencies, analyze markets, and execute trades with just a few clicks.</p>
-                        <a href="dashboard.html" class="read-more">Go to Dashboard &rarr;</a>
+                        <p>Explore a wide range of cryptocurrencies and execute trades with advanced tools and competitive fees.</p>
+                        <a href="dashboard.html" class="read-more">Trade Now &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="pricing" class="pricing-section">
-            <div class="container">
-                <h2 class="text-center">Transparent Pricing, No Hidden Fees</h2>
+            <div class="container text-center">
+                <h2>Simple & Transparent Pricing</h2>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <h3>Starter</h3>
-                        <p class="price">$0 <span>/month</span></p>
+                        <h3>Basic</h3>
+                        <p class="price">$0<span>/month</span></p>
                         <ul>
-                            <li>✓ Instant Buy/Sell</li>
-                            <li>✓ Basic Portfolio Tracking</li>
-                            <li>✓ 5 Crypto Assets</li>
-                            <li>✓ Standard Support</li>
-                            <li>✓ Deposit/Withdrawal Fees Apply</li>
+                            <li>Basic trading features</li>
+                            <li>Standard transaction fees</li>
+                            <li>Email support</li>
+                            <li>Access to market data</li>
+                            <li>Up to 5 assets</li>
                         </ul>
-                        <a href="signup.html" class="btn btn-secondary">Get Started Free</a>
+                        <a href="signup.html" class="btn btn-primary">Choose Basic</a>
                     </div>
                     <div class="pricing-card recommended">
-                        <h3>Pro Trader</h3>
-                        <p class="price">$29 <span>/month</span></p>
+                        <h3>Pro</h3>
+                        <p class="price">$9.99<span>/month</span></p>
                         <ul>
-                            <li>✓ All Starter Features</li>
-                            <li>✓ Advanced Trading Tools</li>
-                            <li>✓ Unlimited Crypto Assets</li>
-                            <li>✓ Priority 24/7 Support</li>
-                            <li>✓ Reduced Trading Fees</li>
-                            <li>✓ Free Monthly Withdrawal</li>
-                            <li>✓ API Access</li>
+                            <li>Advanced trading tools</li>
+                            <li>Reduced transaction fees</li>
+                            <li>Priority chat support</li>
+                            <li>In-depth analytics</li>
+                            <li>Unlimited assets</li>
+                            <li>Early access to new features</li>
                         </ul>
-                        <a href="signup.html" class="btn btn-primary">Choose Pro Trader</a>
+                        <a href="signup.html" class="btn btn-primary">Get Pro Now</a>
                     </div>
                     <div class="pricing-card">
-                        <h3>Enterprise</h3>
-                        <p class="price">Custom <span>/quote</span></p>
+                        <h3>Premium</h3>
+                        <p class="price">$29.99<span>/month</span></p>
                         <ul>
-                            <li>✓ All Pro Trader Features</li>
-                            <li>✓ Dedicated Account Manager</li>
-                            <li>✓ Institutional Liquidity</li>
-                            <li>✓ Custom API Integrations</li>
-                            <li>✓ Personalized Analytics</li>
-                            <li>✓ Offline Storage Solutions</li>
-                            <li>✓ Compliance & Reporting</li>
+                            <li>All Pro features</li>
+                            <li>Zero transaction fees</li>
+                            <li>Dedicated account manager</li>
+                            <li>Personalized insights</li>
+                            <li>Exclusive webinars</li>
+                            <li>Offline support</li>
                         </ul>
-                        <a href="contact.html" class="btn btn-secondary">Contact Sales</a>
+                        <a href="signup.html" class="btn btn-primary">Go Premium</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="learn-more" class="learn-section">
+        <section class="learn-section">
             <div class="container text-center">
-                <h2>Expand Your Crypto Knowledge</h2>
-                <p class="learn-intro">Dive deep into the world of blockchain and cryptocurrencies with our comprehensive educational resources.</p>
-                <a href="learn.html" class="btn btn-primary">Explore Our Academy</a>
-                <div class="learn-grid margin-top-large">
+                <h2>Unlock Your Potential with Crypto Wealth Academy</h2>
+                <p class="learn-intro">Whether you're a beginner or an experienced trader, our comprehensive learning resources will help you navigate the crypto world with confidence.</p>
+                <div class="learn-grid">
                     <div class="learn-card">
-                        <h3>What is Bitcoin?</h3>
-                        <p>Learn the fundamentals of the world's first cryptocurrency and how it works.</p>
-                        <a href="learn.html" class="btn btn-secondary">Read More</a>
+                        <h3>Crypto Basics</h3>
+                        <p>Understand the fundamentals of blockchain, cryptocurrencies, and digital assets.</p>
+                        <a href="learn.html" class="btn btn-secondary">Start Learning</a>
                     </div>
                     <div class="learn-card">
-                        <h3>Understanding DeFi</h3>
-                        <p>Decentralized Finance explained: explore loans, exchanges, and more without intermediaries.</p>
-                        <a href="learn.html" class="btn btn-secondary">Read More</a>
+                        <h3>Trading Strategies</h3>
+                        <p>Learn effective trading techniques, risk management, and market analysis.</p>
+                        <a href="learn.html" class="btn btn-secondary">Explore Strategies</a>
                     </div>
                     <div class="learn-card">
-                        <h3>Blockchain Technology</h3>
-                        <p>Discover the distributed ledger technology that underpins all cryptocurrencies.</p>
-                        <a href="learn.html" class="btn btn-secondary">Read More</a>
+                        <h3>Advanced Topics</h3>
+                        <p>Dive deep into DeFi, NFTs, staking, and other advanced crypto concepts.</p>
+                        <a href="learn.html" class="btn btn-secondary">Discover More</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="faq" class="faq-section">
-            <div class="container">
-                <h2 class="text-center">Frequently Asked Questions</h2>
-                <div class="faq-items">
+            <div class="container text-center">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-items" id="faq-items">
                     <div class="faq-item">
-                        <div class="faq-question">
-                            What is CryptoPilot?
-                        </div>
+                        <div class="faq-question">What is Crypto Wealth?</div>
                         <div class="faq-answer">
-                            <p>CryptoPilot is a secure and user-friendly platform for buying, selling, and managing a wide range of cryptocurrencies. We provide tools for both beginners and experienced traders.</p>
+                            <p>Crypto Wealth is a secure and user-friendly platform designed for trading, investing, and managing various cryptocurrencies. We provide real-time market data, secure storage, and seamless transaction capabilities.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">
-                            How do I open an account?
-                        </div>
+                        <div class="faq-question">How do I open an account?</div>
                         <div class="faq-answer">
-                            <p>You can open an account by clicking on the "Sign Up" button and following the simple registration steps. You will need to complete a quick verification process (KYC) for security and compliance.</p>
+                            <p>Opening an account is simple! Click on "Sign Up" or "Get Started," fill in your details, and complete the quick verification process. You'll be ready to trade in minutes.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">
-                            Is my money safe with CryptoPilot?
-                        </div>
+                        <div class="faq-question">Is my crypto secure with Crypto Wealth?</div>
                         <div class="faq-answer">
-                            <p>Yes, security is our top priority. We employ industry-leading security measures, including cold storage for the majority of funds, two-factor authentication (2FA), and regular security audits to protect your assets.</p>
+                            <p>Absolutely. We prioritize your security with state-of-the-art encryption, multi-factor authentication (MFA), and a significant portion of assets held in secure cold storage.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">
-                            What cryptocurrencies can I trade?
-                        </div>
+                        <div class="faq-question">What cryptocurrencies can I trade?</div>
                         <div class="faq-answer">
-                            <p>CryptoPilot supports over 300 cryptocurrencies, including popular ones like Bitcoin (BTC), Ethereum (ETH), Solana (SOL), and many altcoins. Our list is constantly expanding.</p>
+                            <p>Crypto Wealth supports over 300 cryptocurrencies, including popular ones like Bitcoin (BTC), Ethereum (ETH), Solana (SOL), and many altcoins. Our list is constantly expanding.</p>
                         </div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">
-                            Are there any fees for trading?
-                        </div>
+                        <div class="faq-question">What are the fees like?</div>
                         <div class="faq-answer">
-                            <p>We offer transparent and competitive fees, which vary depending on your trading volume and account tier. Please refer to our Pricing section for detailed information.</p>
+                            <p>We offer transparent and competitive fee structures. Our basic plan has standard fees, while our Pro and Premium plans offer significantly reduced or zero transaction fees.</p>
                         </div>
                     </div>
                 </div>
@@ -345,7 +262,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>CryptoPilot</h3>
+                    <h3>Crypto Wealth</h3>
                     <p>Your trusted partner in the world of digital assets.</p>
                     <div class="social-media">
                         <a href="#" target="_blank"><img src="images/socials/facebook.png" alt="Facebook"></a>
@@ -401,7 +318,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                &copy; 2025 CryptoPilot. All rights reserved.
+                &copy; 2025 Crypto Wealth. All rights reserved.
             </div>
         </div>
     </footer>
