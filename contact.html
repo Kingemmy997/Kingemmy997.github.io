@@ -1,47 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Contact</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Crypto Wealth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="logo">CRYPTO WEALTH</div>
-    <nav>
-      <a href="index.html" class="nav-item">Home</a>
-      <a href="#" class="nav-item">Features</a>
-      <a href="#" class="nav-item">Pricing</a>
-      <a href="login.html" class="nav-item">Login</a>
-      <a href="contact.html" class="nav-item active">Support</a>
-    </nav>
-    <a href="signup.html" class="btn secondary">Sign Up Free</a>
-  </header>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Crypto Wealth</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#pricing">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-transparent">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <main class="contact-main">
-    <section class="contact-section">
-      <h1>Contact Us</h1>
-      <p>We're here to help! Reach out with any questions or support needs.</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn primary">Send Message</button>
-      </form>
-      <div class="contact-info">
-        <h3>Other Ways to Reach Us</h3>
-        <p>Email: support@cryptowealth.com</p>
-        <p>Phone: +1-800-555-1234</p>
-      </div>
-    </section>
-  </main>
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <h2>Get in Touch with Crypto Wealth</h2>
+                <p class="contact-intro">Have questions, feedback, or need support? We're here to help!</p>
 
-  <footer>
-    <div class="footer-bar">
-      <p>© 2025 Crypto Wealth | All Rights Reserved</p>
-    </div>
-  </footer>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Our Contact Information</h3>
+                        <p><strong>Email:</strong> support@cryptowealth.com</p>
+                        <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+                        <p><strong>Address:</strong> 123 Crypto Street, Blockchain City, CW 98765</p>
+                        <div class="social-media">
+                            <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                            <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                            <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Subject of your message" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Crypto Wealth</h3>
+                    <p>&copy; 2023 Crypto Wealth. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
