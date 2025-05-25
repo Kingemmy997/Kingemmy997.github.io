@@ -4,6 +4,15 @@ const COINS = [
   'chainlink', 'avalanche-2', 'polkadot'
 ];
 const NEWS_API = 'https://cryptopanic.com/api/v1/posts/?auth_token=6e0424690214dc9d9e38b563d6bb5af81c04b6c0&public=true';
+// Mobile menu toggle
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navMenu = document.querySelector('nav ul');
+
+if (mobileMenuBtn && navMenu) {
+  mobileMenuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+}
 
 // ========== UTILITY ==========
 function $(selector) { return document.querySelector(selector); }
