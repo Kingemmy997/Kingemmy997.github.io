@@ -2,86 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crypto Wealth | Invest in Crypto with Confidence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>Crypto Wealth - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="https://picsum.photos/40/40" alt="Crypto Wealth Logo">
-      <span>CRYPTO WEALTH</span>
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
     </div>
     <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="legal.html">Legal</a></li>
-        <li><a href="risk.html">Risk</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html" class="nav-item active">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="blog.html" class="nav-item">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item">Risk</a>
+      <a href="contact.html" class="nav-item">Contact</a>
     </nav>
-    <div class="auth">
-      <a href="login.html" class="btn btn-login">Login</a>
-      <a href="signup.html" class="btn btn-signup">Sign Up</a>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
     </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
+
   <main>
-    <section class="hero" style="background-image: url('https://picsum.photos/900/600?blur=2');">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>Invest in Crypto<br>with Confidence</h1>
-        <p>Trusted by investors worldwide. Start with just $10.</p>
-        <a href="signup.html" class="btn btn-primary btn-lg">Explore Coins</a>
+    <section class="hero">
+      <div class="carousel" id="carousel">
+        <div class="carousel-item active">
+          <img src="https://picsum.photos/1200/400?random=2" alt="Crypto Banner 1">
+          <div class="carousel-content">
+            <h1>Invest in Crypto Today</h1>
+            <p>Start with as little as $10.</p>
+            <a href="signup.html" class="btn primary">Get Started</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://picsum.photos/1200/400?random=3" alt="Crypto Banner 2">
+          <div class="carousel-content">
+            <h1>Secure Trading Platform</h1>
+            <p>Trade with confidence on our secure platform.</p>
+            <a href="dashboard.html" class="btn primary">Explore Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://picsum.photos/1200/400?random=4" alt="Crypto Banner 3">
+          <div class="carousel-content">
+            <h1>Join Our Community</h1>
+            <p>Connect with thousands of investors worldwide.</p>
+            <a href="contact.html" class="btn primary">Join Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button onclick="prevSlide()">❮</button>
+        <button onclick="nextSlide()">❯</button>
       </div>
     </section>
-    <section class="features">
-      <h2>WHY CRYPTO WEALTH?</h2>
-      <div class="feature-cards">
-        <div class="feature-card">
-          <span class="feature-icon">🔒</span>
-          <h3>Secure</h3>
-          <p>Bank-level encryption & 2FA protection.</p>
+
+    <section class="market-section">
+      <h2>Live Market Overview</h2>
+      <div class="market-container">
+        <div class="crypto-card" id="crypto-card-1">
+          <h3>Bitcoin (BTC)</h3>
+          <p class="price">Loading...</p>
+          <p class="change">Loading...</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">📊</span>
-          <h3>Diverse</h3>
-          <p>Track 500+ coins like BTC, ETH, SOL, and more.</p>
+        <div class="crypto-card" id="crypto-card-2">
+          <h3>Ethereum (ETH)</h3>
+          <p class="price">Loading...</p>
+          <p class="change">Loading...</p>
         </div>
-        <div class="feature-card">
-          <span class="feature-icon">⚡</span>
-          <h3>Easy</h3>
-          <p>Instant deposits & withdrawals, seamless investing.</p>
+        <div class="crypto-card" id="crypto-card-3">
+          <h3>Binance Coin (BNB)</h3>
+          <p class="price">Loading...</p>
+          <p class="change">Loading...</p>
         </div>
       </div>
     </section>
-    <section class="live-prices">
-      <h2>Live Crypto Prices</h2>
-      <div id="crypto-list"></div>
+
+    <section class="testimonials-section">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial-card">
+          <p>"Crypto Wealth transformed my investment journey. I doubled my portfolio in just 6 months!"</p>
+          <h4>— Jane D., Investor</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"The platform is so easy to use, and the support team is amazing. Highly recommend!"</p>
+          <h4>— Mark S., Trader</h4>
+        </div>
+        <div class="testimonial-card">
+          <p>"I feel secure knowing my investments are in good hands. Best crypto platform out there."</p>
+          <h4>— Sarah K., Entrepreneur</h4>
+        </div>
+      </div>
     </section>
-    <section class="live-news">
+
+    <section class="news-section">
       <h2>Latest Crypto News</h2>
-      <div id="live-news"></div>
+      <div class="news-container" id="news-container">
+        <p>Loading news...</p>
+      </div>
     </section>
   </main>
+
   <footer>
-    <div>
-      <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
-      <p>
-        Contact: <a href="mailto:info@cryptowealth.com">info@cryptowealth.com</a> |
-        WhatsApp: <a href="https://wa.me/2349035924358" target="_blank">+2349035924358</a>
-      </p>
-      <p>
-        <a href="legal.html">Legal</a> | <a href="risk.html">Risk</a> | <a href="faq.html">FAQ</a>
-      </p>
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
     </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
