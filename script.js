@@ -12,6 +12,7 @@ function toggleMenu() {
 let currentSlide = 0;
 function initCarousel() {
   const slides = document.querySelectorAll('.carousel-item');
+  if (slides.length === 0) return;
   showSlide(currentSlide);
   setInterval(() => {
     nextSlide();
@@ -62,7 +63,7 @@ async function fetchCryptoPrices() {
   } catch (error) {
     coins.forEach(coin => {
       const card = document.getElementById(coin.element);
-      card.querySelector('.price').textContent = 'Error';
+      card.querySelector('.price').textContent = 'Unavailable';
       card.querySelector('.change').textContent = 'N/A';
     });
     console.error('Error fetching crypto prices:', error);
