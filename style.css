@@ -6,9 +6,10 @@
 }
 
 body {
-  background: #0F1419 url('https://picsum.photos/1400/800?blur=2') no-repeat center center/cover;
+  background: #0A1C1F url('https://picsum.photos/1400/800?grayscale&blur=2') no-repeat center center/cover;
   color: #fff;
   line-height: 1.6;
+  background-color: #0A1C1F;
 }
 
 header {
@@ -16,7 +17,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgba(15, 20, 25, 0.9);
+  background: rgba(10, 28, 31, 0.9);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -25,7 +26,7 @@ header {
 .logo {
   font-size: 24px;
   font-weight: 700;
-  color: #00C853;
+  color: #2ECC71;
 }
 
 nav {
@@ -43,7 +44,51 @@ nav {
 }
 
 .nav-item.active, .nav-item:hover {
-  color: #00C853;
+  color: #2ECC71;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: #2ECC71;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+
+.btn.primary:hover {
+  background: #27AE60;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: #2ECC71;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn.secondary:hover {
+  background: #f0f0f0;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn.video {
+  background: transparent;
+  color: #2ECC71;
+  border: 1px solid #2ECC71;
+  margin-left: 10px;
+}
+
+.btn.video:hover {
+  background: rgba(46, 204, 113, 0.1);
 }
 
 .login-main {
@@ -55,7 +100,7 @@ nav {
 }
 
 .login-card {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(10, 28, 31, 0.9);
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 15px;
@@ -68,7 +113,7 @@ nav {
 .login-card h1 {
   font-size: 36px;
   font-weight: 800;
-  color: #00C853;
+  color: #2ECC71;
   margin-bottom: 20px;
 }
 
@@ -88,7 +133,7 @@ nav {
   padding: 15px;
   border: none;
   border-radius: 5px;
-  background: #3A3A3A;
+  background: #1A3A3F;
   color: #fff;
   font-size: 16px;
   width: 100%;
@@ -96,20 +141,7 @@ nav {
 
 .login-card .btn {
   padding: 15px;
-  border: none;
-  border-radius: 5px;
-  background: #00C853;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   width: 100%;
-}
-
-.login-card .btn:hover {
-  background: #00A843;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .login-card .signup-link {
@@ -119,14 +151,8 @@ nav {
 }
 
 .login-card .signup-link a {
-  color: #00C853;
+  color: #2ECC71;
   text-decoration: none;
-}
-
-.login-card .security-note {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #A0A0A0;
 }
 
 .index-main {
@@ -136,7 +162,7 @@ nav {
 .hero {
   text-align: center;
   padding: 100px 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(10, 28, 31, 0.7);
   border-radius: 15px;
   margin-bottom: 60px;
 }
@@ -144,7 +170,7 @@ nav {
 .hero h1 {
   font-size: 48px;
   font-weight: 800;
-  color: #00C853;
+  color: #2ECC71;
   margin-bottom: 20px;
 }
 
@@ -152,28 +178,20 @@ nav {
   font-size: 18px;
   color: #A0A0A0;
   margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero .btn {
-  padding: 15px 30px;
-  border: none;
-  border-radius: 5px;
-  background: #00C853;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hero .btn:hover {
-  background: #00A843;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 .features-section {
   padding: 40px 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(10, 28, 31, 0.7);
   border-radius: 15px;
   margin-bottom: 60px;
 }
@@ -181,7 +199,7 @@ nav {
 .features-section h2 {
   font-size: 32px;
   font-weight: 800;
-  color: #00C853;
+  color: #2ECC71;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -195,16 +213,17 @@ nav {
 }
 
 .feature-card {
-  background: #1E252D;
+  background: #1A3A3F;
   padding: 30px;
   border-radius: 10px;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .feature-card h3 {
   font-size: 20px;
   font-weight: 600;
-  color: #00C853;
+  color: #2ECC71;
   margin-bottom: 15px;
 }
 
@@ -214,35 +233,23 @@ nav {
 }
 
 footer {
-  background: #00C853;
-  padding: 15px 20px;
+  background: #0A1C1F;
+  padding: 20px;
   text-align: center;
   font-size: 12px;
-  color: #fff;
-}
-
-.footer-bar .follow-link {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 10px;
+  color: #A0A0A0;
 }
 
 @media (max-width: 768px) {
   header {
     padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
   }
   nav {
-    display: none;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    background: rgba(15, 20, 25, 0.9);
     flex-direction: column;
-    padding: 20px;
-  }
-  nav.active {
-    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   .login-card {
     padding: 20px;
