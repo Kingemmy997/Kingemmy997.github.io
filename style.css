@@ -6,7 +6,7 @@
 }
 
 :root {
-    /* Colors from the image analysis */
+    /* Colors from the image analysis & Bitpanda inspiration */
     --color-dark-bg: #0A0A0A; /* Very dark background */
     --color-darker-card: #151515; /* Slightly lighter dark for cards and sections */
     --color-text-light: #E0E0E0; /* Light grey for most text */
@@ -17,6 +17,8 @@
     --color-border: #333333; /* Light border for separation */
     --color-header-bg: rgba(0, 0, 0, 0.9); /* Header background for sleekness */
     --color-card-shadow: rgba(0, 255, 102, 0.15); /* Subtle green shadow for cards */
+    --color-error: #FF4C4C; /* Red for errors */
+    --color-success: #00CC4C; /* Green for success messages */
 
 
     /* Font stack */
@@ -183,7 +185,8 @@ p { margin-bottom: 15px; color: var(--color-text-dim); }
     width: 100%;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--color-text-light);
 }
 
@@ -262,7 +265,8 @@ p { margin-bottom: 15px; color: var(--color-text-dim); }
     transition: color 0.3s ease;
 }
 
-.mobile-nav-menu ul li a:hover {
+.mobile-nav-menu ul li a:hover,
+.mobile-nav-menu ul li a.active {
     color: var(--color-green-primary);
 }
 
@@ -281,6 +285,23 @@ p { margin-bottom: 15px; color: var(--color-text-dim); }
     position: relative;
     overflow: hidden; /* Contain the orb image */
     background: radial-gradient(circle at center, rgba(0,255,102,0.05) 0%, transparent 70%); /* Subtle radial glow */
+    /* Example: Add a background image */
+    /* background-image: url('https://source.unsplash.com/random/1920x1080/?blockchain,crypto'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    /* background-blend-mode: overlay; */
+    /* filter: brightness(0.8); */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8)); /* Dark overlay for text readability */
+    z-index: 0;
 }
 
 .hero-section .container {
@@ -289,6 +310,8 @@ p { margin-bottom: 15px; color: var(--color-text-dim); }
     justify-content: space-between;
     gap: 50px;
     flex-wrap: wrap;
+    position: relative; /* Ensure container content is above overlay */
+    z-index: 1;
 }
 
 .hero-content {
@@ -339,12 +362,20 @@ p { margin-bottom: 15px; color: var(--color-text-dim); }
 }
 
 /* Sections */
-.features-section, .insights-section, .pricing-section, .faq-section, .contact-section, .dashboard-section {
+.features-section, .insights-section, .pricing-section, .faq-section, .contact-section, .dashboard-section, .learn-section, .wallet-section, .transactions-section, .settings-section {
     padding: 80px 0;
     background-color: var(--color-darker-card); /* Consistent darker background for sections */
     border-top: 1px solid var(--color-border);
+    opacity: 0; /* For scroll reveal */
+    transform: translateY(20px); /* For scroll reveal */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-.features-section:nth-of-type(even), .insights-section:nth-of-type(even), .pricing-section:nth-of-type(even), .faq-section:nth-of-type(even), .contact-section:nth-of-type(even), .dashboard-section:nth-of-type(even) {
+.features-section.visible, .insights-section.visible, .pricing-section.visible, .faq-section.visible, .contact-section.visible, .dashboard-section.visible, .learn-section.visible, .wallet-section.visible, .transactions-section.visible, .settings-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.features-section:nth-of-type(even), .insights-section:nth-of-type(even), .pricing-section:nth-of-type(even), .faq-section:nth-of-type(even), .contact-section:nth-of-type(even), .dashboard-section:nth-of-type(even), .learn-section:nth-of-type(even), .wallet-section:nth-of-type(even), .transactions-section:nth-of-type(even), .settings-section:nth-of-type(even) {
     background-color: var(--color-dark-bg); /* Alternate background for sections */
 }
 
@@ -444,6 +475,7 @@ h2 {
     width: 100%;
     padding: 20px 0;
     overflow: hidden; /* Hide overflowing carousel items */
+    margin-top: 20px;
 }
 
 .crypto-carousel {
@@ -455,6 +487,7 @@ h2 {
     overflow-x: auto; /* Enable horizontal scrolling */
     scrollbar-width: none; /* Hide scrollbar for Firefox */
     -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+    will-change: transform; /* Hint for browser optimization */
 }
 
 .crypto-carousel::-webkit-scrollbar {
@@ -537,6 +570,62 @@ h2 {
     filter: none; /* Ensure no filter on arrow images */
     opacity: 1; /* Ensure no opacity on arrow images */
 }
+
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.carousel-navigation button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-green-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--color-green-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    pointer-events: all; /* Make buttons clickable */
+    z-index: 10;
+}
+
+.carousel-navigation button:hover {
+    background-color: rgba(0, 255, 102, 0.1);
+    transform: scale(1.1);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    height: 10px; /* Allocate space to prevent content jump */
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.indicator-dot.active {
+    background-color: var(--color-green-primary);
+    transform: scale(1.2);
+}
+
 
 /* Insights Section */
 .insights-grid {
@@ -730,47 +819,66 @@ h2 {
 .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; /* Align to top for multi-line sections */
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px; /* Increased gap */
+    text-align: left; /* Align text within sections */
+}
+
+.footer-brand {
+    flex: 1 1 200px; /* Allow brand to grow/shrink */
+    min-width: 180px;
 }
 
 .footer-brand h3 {
     font-size: 1.8em;
     color: var(--color-green-primary);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .footer-brand p {
     font-size: 0.9em;
     color: var(--color-text-dim);
+    margin-bottom: 0; /* Remove default paragraph margin */
 }
 
-.footer-links ul {
+.footer-section {
+    flex: 1 1 150px; /* Allow sections to grow/shrink */
+}
+
+.footer-section h4 {
+    font-size: 1.2em;
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
     list-style: none;
-    display: flex;
-    gap: 25px;
 }
 
-.footer-links a {
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
     color: var(--color-text-dim);
     font-size: 0.95em;
 }
 
-.footer-links a:hover {
+.footer-section ul li a:hover {
     color: var(--color-green-primary);
 }
 
 .social-media {
     display: flex;
     gap: 15px;
+    margin-top: 15px; /* Space from copyright text */
 }
 
 .social-media img {
     width: 24px;
     height: 24px;
     /* This filter attempts to color the icons green while keeping transparency */
-    /* Removed for emojis - emojis don't need filtering */
     filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%) drop-shadow(0 0 5px rgba(0, 255, 102, 0.5));
     transition: transform 0.3s ease;
 }
@@ -778,6 +886,15 @@ h2 {
 .social-media img:hover {
     transform: translateY(-3px) scale(1.1);
     filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%) drop-shadow(0 0 8px rgba(0, 255, 102, 0.8)); /* Stronger glow on hover */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(51, 51, 51, 0.7);
+    font-size: 0.85em;
+    color: var(--color-text-dim);
 }
 
 
@@ -844,6 +961,23 @@ h2 {
     border-color: var(--color-green-primary);
     box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.2);
 }
+
+.form-group input.error-input,
+.form-group textarea.error-input {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(255, 76, 76, 0.2);
+}
+
+.form-group .error-message {
+    color: var(--color-error);
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: none; /* Hidden by default, shown by JS */
+}
+.form-group .error-message.active {
+    display: block;
+}
+
 
 .form-options {
     display: flex;
@@ -925,8 +1059,14 @@ h2 {
     font-size: 0.95em;
 }
 
-.error-message {
-    color: #FF4C4C;
+.general-error-message { /* Used for general form errors like login fail */
+    color: var(--color-error);
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+.general-success-message {
+    color: var(--color-success);
     text-align: center;
     margin-top: 15px;
     font-size: 0.9em;
@@ -1079,6 +1219,402 @@ h2 {
     font-weight: 600;
 }
 
+/* Dashboard Charts */
+.chart-container {
+    position: relative;
+    height: 250px; /* Fixed height for consistency */
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Portfolio actions (Buy/Sell/Swap) */
+.portfolio-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.portfolio-actions .btn {
+    flex: 1;
+    max-width: 150px;
+}
+
+.portfolio-actions .btn-secondary {
+    border-color: var(--color-text-dim);
+    color: var(--color-text-light);
+}
+.portfolio-actions .btn-secondary:hover {
+    border-color: var(--color-green-primary);
+    color: var(--color-green-primary);
+    background-color: transparent;
+}
+
+
+/* Wallet Page */
+.wallet-summary {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.wallet-summary h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+.wallet-summary p {
+    font-size: 1.2em;
+    color: var(--color-text-dim);
+}
+
+.wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.wallet-card {
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.wallet-card h3 {
+    font-size: 1.6em;
+    color: var(--color-green-primary);
+    margin-bottom: 15px;
+}
+
+.wallet-balance {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+}
+
+.wallet-balance span {
+    font-size: 0.6em;
+    color: var(--color-text-dim);
+}
+
+.wallet-address-box {
+    background-color: #0A0A0A;
+    border: 1px dashed var(--color-border);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: monospace;
+    font-size: 0.9em;
+    word-break: break-all;
+    color: var(--color-text-dim);
+    margin-bottom: 15px;
+}
+
+.wallet-address-box button {
+    background: none;
+    border: none;
+    color: var(--color-green-primary);
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: transform 0.2s ease;
+}
+.wallet-address-box button:hover {
+    transform: scale(1.1);
+}
+
+.wallet-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+}
+.wallet-actions .btn {
+    flex: 1;
+}
+
+/* Transactions Page */
+.transaction-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.transaction-filters select, .transaction-filters input {
+    padding: 10px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background-color: #0A0A0A;
+    color: var(--color-text-light);
+    font-size: 1em;
+    outline: none;
+}
+.transaction-filters select option {
+    background-color: #0A0A0A;
+    color: var(--color-text-light);
+}
+
+.transaction-table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for tables on small screens */
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-dark-bg);
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure table doesn't get too squished */
+}
+
+.transaction-table th, .transaction-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+.transaction-table th {
+    color: var(--color-green-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.transaction-table td {
+    color: var(--color-text-light);
+    font-size: 0.95em;
+}
+
+.transaction-table td.amount.positive {
+    color: var(--color-green-primary);
+}
+.transaction-table td.amount.negative {
+    color: var(--color-error);
+}
+
+.transaction-table tr:last-child td {
+    border-bottom: none;
+}
+.transaction-table tr:hover {
+    background-color: rgba(0, 255, 102, 0.03);
+}
+
+
+/* Settings Page */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.settings-card {
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.settings-card h3 {
+    font-size: 1.6em;
+    color: var(--color-green-primary);
+    margin-bottom: 15px;
+}
+.settings-card p {
+    color: var(--color-text-dim);
+    margin-bottom: 10px;
+}
+
+.settings-list ul {
+    list-style: none;
+}
+.settings-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(51, 51, 51, 0.5);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.settings-list li:last-child {
+    border-bottom: none;
+}
+.settings-list li span {
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+.settings-list li a, .settings-list li button {
+    color: var(--color-green-primary);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.settings-list li a:hover, .settings-list li button:hover {
+    color: #00E65C;
+}
+
+/* Theme Toggle (Example) */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--color-green-primary);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--color-green-primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+
+/* Learn Page */
+.learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.learn-card {
+    background-color: var(--color-dark-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--color-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.learn-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--color-card-shadow);
+}
+
+.learn-card h3 {
+    color: var(--color-green-primary);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.learn-card p {
+    font-size: 0.95em;
+    color: var(--color-text-dim);
+    flex-grow: 1; /* Pushes button to bottom */
+}
+
+.learn-card .btn-secondary {
+    margin-top: 15px; /* Space from text */
+    align-self: flex-start; /* Align button to start */
+}
+
+
+/* 404 Page */
+.error-404-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.error-404-section h1 {
+    font-size: 6em;
+    color: var(--color-green-primary);
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0, 255, 102, 0.5);
+}
+
+.error-404-section p {
+    font-size: 1.5em;
+    color: var(--color-text-light);
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.error-404-section .btn {
+    margin-top: 20px;
+}
+
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+.margin-top-large {
+    margin-top: 50px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--color-green-primary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    display: none; /* Hidden by default */
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loading-spinner.active {
+    display: block;
+}
+
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .nav-links {
@@ -1125,6 +1661,26 @@ h2 {
         font-size: 2.2em;
         margin-bottom: 15px;
     }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center; /* Center items in column layout */
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-section {
+        flex: 1 1 100%; /* Make sections take full width */
+        text-align: center;
+    }
+    .footer-section ul {
+        padding-left: 0; /* Remove default list padding */
+    }
+    .footer-section ul li {
+        margin-bottom: 5px;
+    }
+    .social-media {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1143,21 +1699,31 @@ h2 {
     .pricing-card {
         min-height: auto; /* Allow height to adjust */
     }
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-    .footer-links ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .social-media {
-        justify-content: center;
-    }
-
     .crypto-card {
         flex: 0 0 250px; /* Adjust card width for smaller screens */
+    }
+    .carousel-navigation {
+        padding: 0;
+    }
+    .carousel-navigation button {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+    .dashboard-grid, .wallet-grid, .settings-grid, .learn-grid {
+        grid-template-columns: 1fr; /* Single column layout for most grids */
+    }
+    .portfolio-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .portfolio-actions .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    .transaction-table th, .transaction-table td {
+        padding: 10px;
+        font-size: 0.85em;
     }
 }
 
@@ -1199,4 +1765,11 @@ h2 {
     .logo {
         font-size: 1.5em;
     }
+    .error-404-section h1 {
+        font-size: 4em;
+    }
+    .error-404-section p {
+        font-size: 1.2em;
+    }
 }
+
