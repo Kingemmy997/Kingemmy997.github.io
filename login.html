@@ -2,53 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Crypto Wealth | Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Business Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="logo">
-      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
+      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
+      <span>Crypto Wealth</span>
     </div>
-    <a href="signup.html" class="btn">Sign-up</a>
-    <div class="menu-icon" onclick="openMenu()">☰</div>
-    <div id="menu" class="menu">
-      <a href="portfolio.html">Portfolio</a>
-      <a href="trade.html">Trade</a>
-      <a href="wealth-plan.html">Wealth Plan</a>
-      <a href="support.html">Support</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <a href="signup.html" class="btn btn-signup">Sign Up</a>
     </div>
   </header>
-
-  <section class="signup-section">
-    <h2>Business Account</h2>
-    <p>Open a business account with Crypto Wealth to manage your company’s crypto investments.</p>
-    
-    <h3>Benefits</h3>
-    <ul>
-      <li>Higher transaction limits for institutional trading.</li>
-      <li>Dedicated account manager support.</li>
-      <li>Advanced analytics and reporting tools.</li>
-    </ul>
-
-    <h3>Sign Up for a Business Account</h3>
-    <form onsubmit="alert('Business account application submitted! We will contact you soon.'); return false;">
-      <input type="text" placeholder="Company Name" required>
-      <input type="text" placeholder="Contact Person" required>
-      <input type="email" placeholder="Business Email" required>
-      <input type="text" placeholder="Company Registration Number" required>
-      <button type="submit">Apply Now</button>
-    </form>
-  </section>
-
+  <main>
+    <section class="auth-form">
+      <div class="form-card">
+        <h1>Login to Your Account</h1>
+        <form>
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <p>New to Crypto Wealth? <a href="signup.html">Sign up here</a>.</p>
+      </div>
+    </section>
+  </main>
   <footer>
-    <a href="risk.html">Risk Disclosure</a> |
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a> |
-    <a href="business.html">Business Account</a>
+    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
