@@ -1,81 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Wealth - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Crypto Wealth | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Crypto Wealth</div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="coins.html">Coins</a>
-                <a href="coin-sets.html">Coin Sets</a>
-                <a href="login.html">Login</a>
-                <a href="contact.html">Contact</a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        <section class="dashboard-hero">
-            <h1>Your Portfolio Overview</h1>
-            <p class="subtitle">Manage your investments in real-time</p>
-            <button class="cta" id="logout-btn">Log Out</button>
-        </section>
-        <section class="dashboard">
-            <div class="dashboard-grid" id="dashboard-grid"></div>
-            <div class="portfolio" id="user-portfolio">
-                <h2>Your Holdings</h2>
-                <p id="holdings"></p>
-                <p id="total-value"></p>
-                <p id="balance">Balance: $0.00</p>
-            </div>
-            <div class="actions">
-                <h2>Actions</h2>
-                <div class="action-grid">
-                    <div class="action-card">
-                        <h3>Buy Investment</h3>
-                        <form id="buy-form">
-                            <select id="buy-coin">
-                                <option value="bitcoin">Bitcoin (BTC)</option>
-                                <option value="ethereum">Ethereum (ETH)</option>
-                                <option value="solana">Solana (SOL)</option>
-                            </select>
-                            <input type="number" id="buy-amount" placeholder="Amount (USD)" min="1" required>
-                            <button type="submit" class="action-cta">Buy</button>
-                        </form>
-                    </div>
-                    <div class="action-card">
-                        <h3>Transfer</h3>
-                        <form id="transfer-form">
-                            <select id="transfer-coin">
-                                <option value="bitcoin">Bitcoin (BTC)</option>
-                                <option value="ethereum">Ethereum (ETH)</option>
-                                <option value="solana">Solana (SOL)</option>
-                            </select>
-                            <input type="text" id="transfer-address" placeholder="Wallet Address" required>
-                            <input type="number" id="transfer-amount" placeholder="Amount (Coin)" min="0.01" step="0.01" required>
-                            <button type="submit" class="action-cta">Transfer</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="history">
-                <h2>Transaction History</h2>
-                <div id="transaction-history"></div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Trusted by 2M+ users | FIU-Compliant | © 2025 Crypto Wealth</p>
-        <p>Follow us: <a href="https://x.com/Kingpaul997?t=HlAPhp7qkbvw6yrc40U3oQ&s=09">X</a></p>
-        <a href="https://wa.me/2349035924358" class="chat-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat" width="50"></a>
-    </footer>
-    <script src="script.js"></script>
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
+      <span>Crypto Wealth</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <a href="#" class="btn btn-logout">Logout</a>
+    </div>
+  </header>
+  <main>
+    <section class="dashboard">
+      <h1>Your Crypto Portfolio</h1>
+      <div class="portfolio-summary">
+        <div class="card">
+          <h3>Total Balance</h3>
+          <p class="balance">€10,245.36</p>
+        </div>
+        <div class="card">
+          <h3>24h Change</h3>
+          <p class="change positive">+2.45%</p>
+        </div>
+      </div>
+      <div class="portfolio-assets">
+        <h2>Your Assets</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Amount</th>
+              <th>Value</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bitcoin</td>
+              <td>0.5 BTC</td>
+              <td>€18,245</td>
+              <td class="positive">+3.2%</td>
+            </tr>
+            <tr>
+              <td>Ethereum</td>
+              <td>12 ETH</td>
+              <td>€7,860</td>
+              <td class="negative">-1.1%</td>
+            </tr>
+            <tr>
+              <td>Solana</td>
+              <td>50 SOL</td>
+              <td>€4,200</td>
+              <td class="positive">+5.6%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="alerts">
+        <h2>Alerts</h2>
+        <div class="alert-card">
+          <p>Bitcoin price above €35,000</p>
+          <span class="alert-time">Today, 10:30 AM</span>
+        </div>
+        <div class="alert-card">
+          <p>Ethereum volatility detected</p>
+          <span class="alert-time">Yesterday, 4:15 PM</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
