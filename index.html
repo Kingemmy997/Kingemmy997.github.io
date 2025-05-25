@@ -2,41 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Crypto Wealth | Secure Crypto Investment Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></div>
-    <a href="signup.html" class="btn">Sign-up</a>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <nav id="menu" class="menu">
-      <a href="index.html">Home</a>
-      <a href="trade.html">Trade</a>
-      <a href="indices.html">Indices</a>
-      <a href="card.html">Wealth Card</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <h1>Cryptocurrencies</h1>
-    <p>Grow your wealth with top cryptocurrencies anytime, anywhere.</p>
-    <div class="crypto-card">
-      <h3>XRP</h3>
-      <p>2.02 € <span class="change">+0.02 € (0.90%)</span></p>
-      <div class="chart-placeholder"></div>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
+      <span>Crypto Wealth</span>
     </div>
-  </section>
-
+    <nav>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <a href="login.html" class="btn btn-login">Login</a>
+      <a href="signup.html" class="btn btn-signup">Sign Up</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Invest with Confidence</h1>
+      <p>Secure, smart, and insightful crypto investing for everyone.</p>
+      <a href="signup.html" class="btn btn-primary">Get Started</a>
+    </section>
+    <section class="carousel-section">
+      <h2>Featured Insights</h2>
+      <div class="carousel" aria-label="Featured content">
+        <button class="carousel-control-prev" aria-label="Previous slide">❮</button>
+        <div class="carousel-items">
+          <div class="carousel-item">
+            <h3>Bank-Grade Security</h3>
+            <p>Your assets are protected with advanced encryption.</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Smart Portfolio</h3>
+            <p>Automated management for optimal returns.</p>
+          </div>
+          <div class="carousel-item">
+            <h3>Market Insights</h3>
+            <p>Real-time analytics at your fingertips.</p>
+          </div>
+        </div>
+        <button class="carousel-control-next" aria-label="Next slide">❯</button>
+      </div>
+    </section>
+    <section class="features">
+      <div class="feature-card">
+        <div class="icon">🛡️</div>
+        <h3>Bank-Grade Security</h3>
+        <p>Your assets are protected with advanced encryption and multi-factor authentication.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📈</div>
+        <h3>Live Market Insights</h3>
+        <p>Real-time analytics and personalized alerts keep you ahead of the market.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧠</div>
+        <h3>Smart Portfolio</h3>
+        <p>Automated portfolio management and smart rebalancing for optimal returns.</p>
+      </div>
+    </section>
+    <section class="live-prices">
+      <h2>Live Crypto Prices</h2>
+      <div id="crypto-list"></div>
+    </section>
+    <section class="cta">
+      <h2>Ready to grow your wealth?</h2>
+      <a href="signup.html" class="btn btn-primary">Join Crypto Wealth Today</a>
+    </section>
+  </main>
   <footer>
-    <a href="risk.html">Risk Disclosure</a> |
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a>
+    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
   </footer>
-
-  <script>
-    function toggleMenu() { document.getElementById('menu').classList.toggle('active'); }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
