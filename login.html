@@ -2,47 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crypto Wealth | Login</title>
+  <title>Login | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
-      <span>Crypto Wealth</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="auth">
-      <a href="signup.html" class="btn btn-signup">Sign Up</a>
-    </div>
+    <!-- ... same header as homepage ... -->
   </header>
   <main>
-    <section class="auth-form">
-      <div class="form-card">
-        <h1>Login to Your Account</h1>
-        <form>
-          <label for="email">Email</label>
-          <input type="email" id="email" required>
-          <label for="password">Password</label>
-          <input type="password" id="password" required>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <p>New to Crypto Wealth? <a href="signup.html">Sign up here</a>.</p>
-      </div>
+    <section class="form-section">
+      <form class="form-card" id="login-form">
+        <h2>Welcome Back</h2>
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" required placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <p class="form-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+      </form>
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+    <!-- ... same footer as homepage ... -->
   </footer>
   <script src="script.js"></script>
 </body>
