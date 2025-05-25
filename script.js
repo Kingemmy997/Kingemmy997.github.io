@@ -23,162 +23,120 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Real-Time Market Insights (Chart.js Integration) ---
-    const chartCanvas = document.getElementById('marketPriceChart');
-    const chartStatus = document.getElementById('chartStatus');
-    let marketPriceChart; // To hold the Chart.js instance
+    // --- Hamburger Menu Logic ---
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
 
-    // Function to fetch cryptocurrency data (e.g., Bitcoin price over 7 days)
-    async function fetchCryptoData(coinId = 'bitcoin', days = 7) {
-        chartStatus.textContent = 'Loading market data...';
-        chartStatus.style.display = 'block';
-        if (chartCanvas) chartCanvas.style.opacity = '0.5';
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileNavMenu.classList.toggle('open');
+        // Prevent body scrolling when mobile menu is open
+        document.body.classList.toggle('no-scroll');
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNavMenu.classList.remove('open');
+            document.body.classList.remove('no-scroll');
+        });
+    });
+
+    // --- Real-Time Crypto Coin Carousel ---
+    const cryptoCarousel = document.getElementById('cryptoCarousel');
+    const carouselStatus = document.getElementById('carouselStatus');
+    const cryptoCoinsToFetch = [
+        'bitcoin', 'ethereum', 'ripple', 'litecoin', 'cardano',
+        'solana', 'dogecoin', 'polkadot', 'shiba-inu', 'avalanche'
+    ]; // Top coins to display
+
+    async function fetchCryptoPrices() {
+        if (!cryptoCarousel) return; // Exit if carousel element doesn't exist
+
+        carouselStatus.textContent = 'Loading crypto prices...';
+        carouselStatus.style.display = 'block';
+        cryptoCarousel.innerHTML = ''; // Clear previous cards
 
         try {
-            // Using CoinGecko API for historical data (e.g., last 7 days)
-            const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`);
+            // Fetch multiple coins data in one API call for efficiency
+            const ids = cryptoCoinsToFetch.join('%2C'); // Join with URL-encoded comma
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`);
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
 
-            if (!data || !data.prices || data.prices.length === 0) {
-                throw new Error('No price data received.');
+            if (!data || data.length === 0) {
+                throw new Error('No crypto data received.');
             }
 
-            // Extract labels (dates) and data (prices)
-            const prices = data.prices;
-            const labels = prices.map(item => {
-                const date = new Date(item[0]);
-                return date.toLocaleDateString(); // Format date nicely
+            carouselStatus.style.display = 'none'; // Hide status
+            data.forEach(coin => {
+                const change24h = coin.price_change_percentage_24h_in_currency ? coin.price_change_percentage_24h_in_currency.toFixed(2) : 'N/A';
+                const isPositive = change24h !== 'N/A' && parseFloat(change24h) >= 0;
+                const changeClass = isPositive ? 'positive' : 'negative';
+                const arrowIcon = isPositive ? 'images/arrow-up.png' : 'images/arrow-down.png'; // Assuming you have these icons
+
+                const cryptoCard = `
+                    <div class="crypto-card">
+                        <div class="coin-header">
+                            <img src="${coin.image}" alt="${coin.name} icon" class="coin-icon">
+                            <span class="coin-name">${coin.name}</span>
+                            <span class="coin-symbol">${coin.symbol}</span>
+                        </div>
+                        <div class="current-price">$${coin.current_price.toLocaleString()}</div>
+                        <div class="price-change ${changeClass}">
+                            ${change24h}%
+                            ${change24h !== 'N/A' ? `<img src="${arrowIcon}" alt="${isPositive ? 'Up' : 'Down'} arrow">` : ''}
+                        </div>
+                    </div>
+                `;
+                cryptoCarousel.innerHTML += cryptoCard;
             });
-            const values = prices.map(item => item[1].toFixed(2)); // Price to 2 decimal places
-
-            chartStatus.style.display = 'none'; // Hide status
-            if (chartCanvas) chartCanvas.style.opacity = '1';
-
-            return { labels, values };
 
         } catch (error) {
             console.error('Error fetching crypto data:', error);
-            chartStatus.textContent = `Error loading data: ${error.message}. Please try again later.`;
-            chartStatus.style.display = 'block';
-            if (chartCanvas) chartCanvas.style.opacity = '0.2'; // Dim chart on error
-            return null;
+            carouselStatus.textContent = `Error loading data: ${error.message}. Please try again later.`;
+            carouselStatus.style.display = 'block';
+            cryptoCarousel.innerHTML = ''; // Clear any partial cards
         }
     }
 
-    // Function to render/update the chart
-    async function renderMarketChart() {
-        const chartData = await fetchCryptoData('bitcoin', 30); // Fetch Bitcoin data for last 30 days
+    // Initial fetch and render
+    fetchCryptoPrices();
 
-        if (!chartData) {
-            // Data fetch failed, chartStatus already updated
-            if (marketPriceChart) {
-                marketPriceChart.destroy(); // Destroy old chart if exists
-            }
-            return;
-        }
+    // Update prices every 60 seconds (CoinGecko rate limit is 50-100 calls/minute)
+    setInterval(fetchCryptoPrices, 60000); // 60,000 ms = 1 minute
 
-        const ctx = chartCanvas.getContext('2d');
-
-        // Destroy existing chart if it exists to prevent multiple instances
-        if (marketPriceChart) {
-            marketPriceChart.destroy();
-        }
-
-        marketPriceChart = new Chart(ctx, {
-            type: 'line', // Line chart for price over time
-            data: {
-                labels: chartData.labels,
-                datasets: [{
-                    label: 'Bitcoin Price (USD)',
-                    data: chartData.values,
-                    borderColor: 'rgba(0, 255, 102, 1)', // Vibrant green
-                    backgroundColor: 'rgba(0, 255, 102, 0.2)', // Light green fill
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.3, // Smooth curves
-                    pointRadius: 0, // No points on line
-                    pointHoverRadius: 5, // Show point on hover
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false, // Allows flexible sizing based on parent
-                plugins: {
-                    legend: {
-                        display: true,
-                        labels: {
-                            color: 'var(--color-text-dim)', // Legend text color
-                            font: {
-                                size: 14
-                            }
-                        }
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return `Price: $${context.parsed.y}`;
-                            }
-                        },
-                        backgroundColor: 'rgba(0,0,0,0.8)',
-                        titleColor: 'var(--color-green-primary)',
-                        bodyColor: 'var(--color-text-light)',
-                        borderColor: 'var(--color-green-primary)',
-                        borderWidth: 1
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            color: 'rgba(51, 51, 51, 0.5)', // Darker grid lines
-                            drawBorder: false
-                        },
-                        ticks: {
-                            color: 'var(--color-text-dim)', // X-axis label color
-                            autoSkip: true, // Auto-skip labels if too many
-                            maxRotation: 0,
-                            minRotation: 0
-                        }
-                    },
-                    y: {
-                        grid: {
-                            color: 'rgba(51, 51, 51, 0.5)', // Darker grid lines
-                            drawBorder: false
-                        },
-                        ticks: {
-                            color: 'var(--color-text-dim)', // Y-axis label color
-                            callback: function(value) {
-                                return `$${value}`; // Add dollar sign
-                            }
-                        },
-                        beginAtZero: false // Start y-axis from actual min value
-                    }
-                }
-            }
-        });
-    }
-
-    // Initialize chart on page load
-    if (chartCanvas) { // Only try to render if the canvas exists
-        renderMarketChart();
-
-        // Optional: Update data periodically for "real-time" feel
-        // Be mindful of API rate limits! CoinGecko is usually 100 calls/minute.
-        // For production, you'd use WebSockets for true real-time.
-        // setInterval(renderMarketChart, 60000); // Update every minute (60,000 ms)
-    }
-
-    // --- Simple Smooth Scrolling for Nav Links (Optional) ---
+    // --- Simple Smooth Scrolling for Nav Links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            // Handle mobile menu close if applicable
+            if (mobileNavMenu.classList.contains('open')) {
+                hamburger.classList.remove('open');
+                mobileNavMenu.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            }
+
+            // Get target element
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const headerOffset = document.querySelector('.header').offsetHeight; // Height of fixed header
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // -20 for extra space
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
-
 });
