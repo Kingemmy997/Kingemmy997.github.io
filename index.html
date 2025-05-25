@@ -3,145 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Grow Your Wealth</title>
+  <title>Crypto Wealth</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Header -->
   <header>
-    <div class="logo">
-      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
-    </div>
+    <div class="logo"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></div>
     <a href="signup.html" class="btn">Sign-up</a>
-    <div class="menu-icon" onclick="openMenu()">☰</div>
-    <div id="menu" class="menu">
-      <a href="portfolio.html">Portfolio</a>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="menu" class="menu">
+      <a href="index.html">Home</a>
       <a href="trade.html">Trade</a>
-      <a href="wealth-plan.html">Wealth Plan</a>
-      <a href="support.html">Support</a>
-    </div>
+      <a href="indices.html">Indices</a>
+      <a href="card.html">Wealth Card</a>
+    </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
+  <section class="hero">
     <h1>Cryptocurrencies</h1>
     <p>Grow your wealth with top cryptocurrencies anytime, anywhere.</p>
-    <div class="carousel" id="crypto-carousel">
-      <div class="carousel-item" data-coin="bitcoin">
-        <h3>Bitcoin</h3>
-        <p id="btc-price">Loading... <span class="price-change"></span></p>
-        <canvas id="btc-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="ethereum">
-        <h3>Ethereum</h3>
-        <p id="eth-price">Loading... <span class="price-change"></span></p>
-        <canvas id="eth-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="bnb">
-        <h3>BNB</h3>
-        <p id="bnb-price">Loading... <span class="price-change"></span></p>
-        <canvas id="bnb-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="solana">
-        <h3>Solana</h3>
-        <p id="sol-price">Loading... <span class="price-change"></span></p>
-        <canvas id="sol-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="cardano">
-        <h3>Cardano</h3>
-        <p id="ada-price">Loading... <span class="price-change"></span></p>
-        <canvas id="ada-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="xrp">
-        <h3>XRP</h3>
-        <p id="xrp-price">Loading... <span class="price-change"></span></p>
-        <canvas id="xrp-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="dogecoin">
-        <h3>Dogecoin</h3>
-        <p id="doge-price">Loading... <span class="price-change"></span></p>
-        <canvas id="doge-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="polkadot">
-        <h3>Polkadot</h3>
-        <p id="dot-price">Loading... <span class="price-change"></span></p>
-        <canvas id="dot-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="avalanche">
-        <h3>Avalanche</h3>
-        <p id="avax-price">Loading... <span class="price-change"></span></p>
-        <canvas id="avax-chart" class="chart-placeholder"></canvas>
-      </div>
-      <div class="carousel-item" data-coin="chainlink">
-        <h3>Chainlink</h3>
-        <p id="link-price">Loading... <span class="price-change"></span></p>
-        <canvas id="link-chart" class="chart-placeholder"></canvas>
-      </div>
-    </div>
-    <div class="carousel-dots">
-      <span class="dot active" onclick="goToSlide(0)"></span>
-      <span class="dot" onclick="goToSlide(1)"></span>
-      <span class="dot" onclick="goToSlide(2)"></span>
-      <span class="dot" onclick="goToSlide(3)"></span>
-      <span class="dot" onclick="goToSlide(4)"></span>
-      <span class="dot" onclick="goToSlide(5)"></span>
-      <span class="dot" onclick="goToSlide(6)"></span>
-      <span class="dot" onclick="goToSlide(7)"></span>
-      <span class="dot" onclick="goToSlide(8)"></span>
-      <span class="dot" onclick="goToSlide(9)"></span>
+    <div class="crypto-card">
+      <h3>XRP</h3>
+      <p>2.02 € <span class="change">+0.02 € (0.90%)</span></p>
+      <div class="chart-placeholder"></div>
     </div>
   </section>
 
-  <!-- Feature Sections -->
-  <section class="feature-section">
-    <h2>Wealth Plans</h2>
-    <p>Automate your crypto investments with recurring plans.</p>
-    <a href="wealth-plan.html" class="btn">Learn More</a>
-  </section>
-
-  <section class="feature-section">
-    <h2>Precious Metals</h2>
-    <p>Diversify with tokenized gold, silver, and more.</p>
-    <a href="metals.html" class="btn">Explore Now</a>
-  </section>
-
-  <section class="feature-section">
-    <h2>Crypto Indices</h2>
-    <p>Invest in the top 10 cryptocurrencies with one click.</p>
-    <a href="indices.html" class="btn">Get Started</a>
-  </section>
-
-  <section class="feature-section">
-    <h2>Wealth Card</h2>
-    <p>Spend your crypto anywhere with our VISA card.</p>
-    <a href="card.html" class="btn">Apply Today</a>
-  </section>
-
-  <section class="feature-section">
-    <h2>Wealth Token (WLT)</h2>
-    <p>Unlock trading discounts and VIP perks with WLT.</p>
-    <a href="token.html" class="btn">Discover WLT</a>
-  </section>
-
-  <!-- Sign-up Section -->
-  <section class="signup-section">
-    <p>Transactions in crypto-assets involve specific risks, including market volatility and potential loss of capital. To fully understand the risks associated with these transactions, review the <a href="risk.html">Risk Disclosure</a>.</p>
-    <p>I confirm that I'm acting under my own name and on my own behalf and I consent to receive all communications electronically from Crypto Wealth.</p>
-    <p>Your personal data will be processed in accordance with the Crypto Wealth <a href="privacy.html">Privacy Notice</a>.</p>
-    <button onclick="window.location.href='signup.html'" class="btn">Create Account</button>
-    <p>Already have an account? <a href="login.html">Log in here</a></p>
-    <p>Looking to open a business account? <a href="business.html">Sign up here</a></p>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <a href="risk.html">Risk Disclosure</a> |
     <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a> |
-    <a href="business.html">Business Account</a>
+    <a href="terms.html">Terms</a>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('menu').classList.toggle('active'); }
+  </script>
 </body>
 </html>
