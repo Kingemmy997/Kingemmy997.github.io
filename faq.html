@@ -2,36 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FAQ | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ - Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header> ... (same as index.html) ... </header>
+  <header>
+    <div class="logo">
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
+    </div>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item active">FAQ</a>
+      <a href="blog.html" class="nav-item">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item">Risk</a>
+      <a href="contact.html" class="nav-item">Contact</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
   <main>
     <section class="faq-section">
       <h2>Frequently Asked Questions</h2>
-      <div id="faq-list">
-        <div>
-          <div class="faq-question">What is Crypto Wealth?</div>
-          <div class="faq-answer">Crypto Wealth is a secure platform for investing in cryptocurrencies, offering live prices, news, and educational resources.</div>
-        </div>
-        <div>
-          <div class="faq-question">How do I start investing?</div>
-          <div class="faq-answer">Sign up, verify your email, and fund your account. You can then buy, sell, or hold any supported cryptocurrency.</div>
-        </div>
-        <div>
-          <div class="faq-question">Is my money safe?</div>
-          <div class="faq-answer">We use bank-level encryption, 2FA, and cold storage to keep your assets secure.</div>
-        </div>
-        <div>
-          <div class="faq-question">How can I contact support?</div>
-          <div class="faq-answer">Use our <a href="contact.html">contact page</a> or WhatsApp us at +2349035924358.</div>
-        </div>
+      <div class="faq-item">
+        <h3 onclick="toggleFAQ(this)">What is Crypto Wealth?</h3>
+        <p>Crypto Wealth is a platform for investing in and trading cryptocurrencies securely.</p>
+      </div>
+      <div class="faq-item">
+        <h3 onclick="toggleFAQ(this)">How do I start investing?</h3>
+        <p>Sign up for an account, deposit funds, and start trading with as little as $10.</p>
+      </div>
+      <div class="faq-item">
+        <h3 onclick="toggleFAQ(this)">Is my money safe?</h3>
+        <p>We use advanced security measures, but investing in crypto carries inherent risks.</p>
       </div>
     </section>
   </main>
-  <footer> ... (same as index.html) ... </footer>
+
+  <footer>
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
