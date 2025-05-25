@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Wealth - Wealth Plan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
+    </div>
+    <button onclick="logout()" class="btn">Logout</button>
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+    <div id="menu" class="menu">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="trade.html">Trade</a>
+      <a href="wealth-plan.html">Wealth Plan</a>
+      <a href="support.html">Support</a>
+    </div>
+  </header>
+
+  <section class="plan-section">
+    <h2>Wealth Plans</h2>
+    <p>Automate your investments with our Wealth Plans. Set up recurring purchases to build your portfolio over time.</p>
+    
+    <h3>Benefits</h3>
+    <ul>
+      <li>Consistent investing to mitigate market volatility.</li>
+      <li>Customizable plans to match your financial goals.</li>
+      <li>Secure and automated transactions.</li>
+    </ul>
+
+    <h3>Create a Wealth Plan</h3>
+    <form onsubmit="setupWealthPlan(event)">
+      <select id="plan-coin" required>
+        <option value="Bitcoin">Bitcoin</option>
+        <option value="Ethereum">Ethereum</option>
+        <option value="BNB">BNB</option>
+        <option value="Solana">Solana</option>
+        <option value="Cardano">Cardano</option>
+        <option value="XRP">XRP</option>
+        <option value="Dogecoin">Dogecoin</option>
+        <option value="Polkadot">Polkadot</option>
+        <option value="Avalanche">Avalanche</option>
+        <option value="Chainlink">Chainlink</option>
+      </select>
+      <input type="number" id="plan-amount" placeholder="Amount (€)" required>
+      <select id="plan-frequency" required>
+        <option value="Daily">Daily</option>
+        <option value="Weekly">Weekly</option>
+        <option value="Monthly">Monthly</option>
+      </select>
+      <button type="submit">Set Up Plan</button>
+    </form>
+  </section>
+
+  <footer>
+    <a href="risk.html">Risk Disclosure</a> |
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="business.html">Business Account</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

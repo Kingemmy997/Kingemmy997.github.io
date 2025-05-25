@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Wealth - Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
+    </div>
+    <button onclick="logout()" class="btn">Logout</button>
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+    <div id="menu" class="menu">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="trade.html">Trade</a>
+      <a href="wealth-plan.html">Wealth Plan</a>
+      <a href="support.html">Support</a>
+    </div>
+  </header>
+
+  <section class="dashboard-section">
+    <h2>Your Portfolio</h2>
+    <p>Balance: <span id="balance">0 €</span></p>
+    
+    <h3>Holdings</h3>
+    <table id="portfolio-table">
+      <tr><th>Coin</th><th>Amount</th><th>Value (€)</th></tr>
+    </table>
+
+    <h3>Send Funds</h3>
+    <form onsubmit="send(event)">
+      <input type="number" id="send-amount" placeholder="Amount (€)" required>
+      <input type="text" id="send-address" placeholder="Recipient Address" required>
+      <button type="submit">Send</button>
+    </form>
+
+    <h3>Receive Funds</h3>
+    <form onsubmit="receive(event)">
+      <input type="number" id="receive-amount" placeholder="Amount (€)" required>
+      <button type="submit">Receive</button>
+    </form>
+
+    <h3>Transaction History</h3>
+    <table id="transactions-table">
+      <tr><th>Type</th><th>Amount</th><th>Coin</th><th>Address</th><th>Date</th></tr>
+    </table>
+  </section>
+
+  <footer>
+    <a href="risk.html">Risk Disclosure</a> |
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="business.html">Business Account</a>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    displayDashboard();
+  </script>
+</body>
+</html>

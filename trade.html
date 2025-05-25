@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Wealth - Trade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
+    </div>
+    <button onclick="logout()" class="btn">Logout</button>
+    <div class="menu-icon" onclick="openMenu()">☰</div>
+    <div id="menu" class="menu">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="trade.html">Trade</a>
+      <a href="wealth-plan.html">Wealth Plan</a>
+      <a href="support.html">Support</a>
+    </div>
+  </header>
+
+  <section class="trade-section">
+    <h2>Trade Cryptocurrencies</h2>
+    <p>Buy and sell cryptocurrencies securely with competitive rates.</p>
+    
+    <form onsubmit="trade(event)">
+      <select id="trade-action" required>
+        <option value="buy">Buy</option>
+        <option value="sell">Sell</option>
+      </select>
+      <select id="trade-coin" required>
+        <option value="Bitcoin">Bitcoin</option>
+        <option value="Ethereum">Ethereum</option>
+        <option value="BNB">BNB</option>
+        <option value="Solana">Solana</option>
+        <option value="Cardano">Cardano</option>
+        <option value="XRP">XRP</option>
+        <option value="Dogecoin">Dogecoin</option>
+        <option value="Polkadot">Polkadot</option>
+        <option value="Avalanche">Avalanche</option>
+        <option value="Chainlink">Chainlink</option>
+      </select>
+      <input type="number" id="trade-amount" placeholder="Amount" required>
+      <button type="submit">Execute Trade</button>
+    </form>
+
+    <h3>Current Prices</h3>
+    <table>
+      <tr><th>Coin</th><th>Price (€)</th></tr>
+      <tr><td>Bitcoin</td><td id="bitcoin-price">Loading...</td></tr>
+      <tr><td>Ethereum</td><td id="ethereum-price">Loading...</td></tr>
+      <tr><td>BNB</td><td id="bnb-price">Loading...</td></tr>
+      <tr><td>Solana</td><td id="solana-price">Loading...</td></tr>
+      <tr><td>Cardano</td><td id="cardano-price">Loading...</td></tr>
+      <tr><td>XRP</td><td id="xrp-price">Loading...</td></tr>
+      <tr><td>Dogecoin</td><td id="dogecoin-price">Loading...</td></tr>
+      <tr><td>Polkadot</td><td id="polkadot-price">Loading...</td></tr>
+      <tr><td>Avalanche</td><td id="avalanche-price">Loading...</td></tr>
+      <tr><td>Chainlink</td><td id="chainlink-price">Loading...</td></tr>
+    </table>
+  </section>
+
+  <footer>
+    <a href="risk.html">Risk Disclosure</a> |
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms</a> |
+    <a href="business.html">Business Account</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

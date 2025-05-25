@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Business Account</title>
+  <title>Crypto Wealth - Sign Up</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,24 +22,16 @@
   </header>
 
   <section class="signup-section">
-    <h2>Business Account</h2>
-    <p>Open a business account with Crypto Wealth to manage your company’s crypto investments.</p>
+    <h2>Sign Up</h2>
+    <p>Join Crypto Wealth to start building your financial future.</p>
     
-    <h3>Benefits</h3>
-    <ul>
-      <li>Higher transaction limits for institutional trading.</li>
-      <li>Dedicated account manager support.</li>
-      <li>Advanced analytics and reporting tools.</li>
-    </ul>
-
-    <h3>Sign Up for a Business Account</h3>
-    <form onsubmit="alert('Business account application submitted! We will contact you soon.'); return false;">
-      <input type="text" placeholder="Company Name" required>
-      <input type="text" placeholder="Contact Person" required>
-      <input type="email" placeholder="Business Email" required>
-      <input type="text" placeholder="Company Registration Number" required>
-      <button type="submit">Apply Now</button>
+    <form onsubmit="signUp(event)">
+      <input type="text" id="signup-username" placeholder="Username" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <button type="submit">Create Account</button>
     </form>
+
+    <p>Already have an account? <a href="login.html">Log in here</a></p>
   </section>
 
   <footer>
