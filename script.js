@@ -1,3 +1,215 @@
+// User Database Simulation with localStorage
+const usersDB = JSON.parse(localStorage.getItem('users')) || [];
+const currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+
+// Sample User Data (for demo purposes, pre-populated if no users exist)
+if (usersDB.length === 0) {
+  usersDB.push({
+    username: "user1",
+    password: "pass123",
+    balance: 50000, // In EUR
+    portfolio: [
+      { coin: "Bitcoin", amount: 1.5, value: 0 },
+      { coin: "Ethereum", amount: 10, value: 0 }
+    ],
+    transactions: []
+  });
+  localStorage.setItem('users', JSON.stringify(usersDB));
+}
+
+// Sign-up Function
+function signUp(event) {
+  event.preventDefault();
+  const username = document.getElementById('signup-username').value;
+  const password = document.getElementById('signup-password').value;
+  if (usersDB.some(user => user.username === username)) {
+    alert('Username already exists!');
+    return;
+  }
+  usersDB.push({
+    username,
+    password,
+    balance: 10000, // Initial balance in EUR
+    portfolio: [],
+    transactions: []
+  });
+  localStorage.setItem('users', JSON.stringify(usersDB));
+  alert('Sign-up successful! Please log in.');
+  window.location.href = 'login.html';
+}
+
+// Login Function
+function login(event) {
+  event.preventDefault();
+  const username = document.getElementById('login-username').value;
+  const password = document.getElementById('login-password').value;
+  const user = usersDB.find(user => user.username === username && user.password === password);
+  if (user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    window.location.href = 'portfolio.html';
+  } else {
+    alert('Invalid username or password!');
+  }
+}
+
+// Logout Function
+function logout() {
+  localStorage.removeItem('currentUser');
+  window.location.href = 'index.html';
+}
+
+// Check if User is Logged In
+function checkLogin() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser && window.location.pathname.includes('portfolio.html')) {
+    window.location.href = 'login.html';
+  }
+}
+
+// Display Dashboard Data
+function displayDashboard() {
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  if (!currentUser) return;
+  
+  // Update Balance
+  document.getElementById('balance').textContent = currentUser.balance.toLocaleString() + ' €';
+  
+  // Update Portfolio
+  const portfolioTable = document.getElementById('portfolio-table');
+  portfolioTable.innerHTML = '<tr><th>Coin</th><th>Amount</th><th>Value (€)</th></tr>';
+  currentUser.portfolio.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${item.coin}</td><td>${item.amount}</td><td>${item.value.toLocaleString()}</td>`;
+    portfolioTable.appendChild(row);
+  });
+  
+  // Update Transactions
+  const transactionsTable = document.getElementById('transactions-table');
+  transactionsTable.innerHTML = '<tr><th>Type</th><th>Amount</th><th>Coin</th><th>Address</th><th>Date</th></tr>';
+  currentUser.transactions.forEach(tx => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${tx.type}</td><td>${tx.amount}</td><td>${tx.coin || '-'}</td><td>${tx.address || '-'}</td><td>${tx.date}</td>`;
+    transactionsTable.appendChild(row);
+  });
+}
+
+// Send Function
+function send(event) {
+  event.preventDefault();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const amount = parseFloat(document.getElementById('send-amount').value);
+  const address = document.getElementById('send-address').value;
+  
+  if (amount > currentUser.balance) {
+    alert('Insufficient balance!');
+    return;
+  }
+  
+  currentUser.balance -= amount;
+  currentUser.transactions.push({
+    type: 'Send',
+    amount,
+    address,
+    date: new Date().toLocaleString()
+  });
+  
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  const userIndex = usersDB.findIndex(user => user.username === currentUser.username);
+  usersDB[userIndex] = currentUser;
+  localStorage.setItem('users', JSON.stringify(usersDB));
+  alert('Transaction successful!');
+  displayDashboard();
+}
+
+// Receive Function
+function receive(event) {
+  event.preventDefault();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const amount = parseFloat(document.getElementById('receive-amount').value);
+  
+  currentUser.balance += amount;
+  currentUser.transactions.push({
+    type: 'Receive',
+    amount,
+    date: new Date().toLocaleString()
+  });
+  
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  const userIndex = usersDB.findIndex(user => user.username === currentUser.username);
+  usersDB[userIndex] = currentUser;
+  localStorage.setItem('users', JSON.stringify(usersDB));
+  alert('Funds received!');
+  displayDashboard();
+}
+
+// Trade Function
+function trade(event) {
+  event.preventDefault();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const action = document.getElementById('trade-action').value;
+  const coin = document.getElementById('trade-coin').value;
+  const amount = parseFloat(document.getElementById('trade-amount').value);
+  const pricePerCoin = parseFloat(document.getElementById(coin.toLowerCase() + '-price').textContent.split(' ')[0].replace(',', ''));
+  const totalCost = amount * pricePerCoin;
+
+  if (action === 'buy') {
+    if (totalCost > currentUser.balance) {
+      alert('Insufficient balance!');
+      return;
+    }
+    currentUser.balance -= totalCost;
+    const portfolioItem = currentUser.portfolio.find(item => item.coin === coin);
+    if (portfolioItem) {
+      portfolioItem.amount += amount;
+      portfolioItem.value = portfolioItem.amount * pricePerCoin;
+    } else {
+      currentUser.portfolio.push({ coin, amount, value: amount * pricePerCoin });
+    }
+  } else {
+    const portfolioItem = currentUser.portfolio.find(item => item.coin === coin);
+    if (!portfolioItem || portfolioItem.amount < amount) {
+      alert('Insufficient coins to sell!');
+      return;
+    }
+    portfolioItem.amount -= amount;
+    portfolioItem.value = portfolioItem.amount * pricePerCoin;
+    if (portfolioItem.amount === 0) {
+      currentUser.portfolio = currentUser.portfolio.filter(item => item.coin !== coin);
+    }
+    currentUser.balance += totalCost;
+  }
+
+  currentUser.transactions.push({
+    type: action.charAt(0).toUpperCase() + action.slice(1),
+    amount,
+    coin,
+    date: new Date().toLocaleString()
+  });
+
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  const userIndex = usersDB.findIndex(user => user.username === currentUser.username);
+  usersDB[userIndex] = currentUser;
+  localStorage.setItem('users', JSON.stringify(usersDB));
+  alert('Trade successful!');
+  displayDashboard();
+}
+
+// Wealth Plan Function
+function setupWealthPlan(event) {
+  event.preventDefault();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const coin = document.getElementById('plan-coin').value;
+  const amount = parseFloat(document.getElementById('plan-amount').value);
+  const frequency = document.getElementById('plan-frequency').value;
+
+  if (amount > currentUser.balance) {
+    alert('Insufficient balance to set up plan!');
+    return;
+  }
+
+  alert(`Wealth Plan set up: ${amount} € in ${coin} every ${frequency}`);
+}
+
 // Open Menu
 function openMenu() {
   document.getElementById('menu').style.display = 'block';
@@ -35,6 +247,21 @@ fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binanc
       `${data['avalanche-2'].eur.toLocaleString()} € <span class="price-change">+1.00 € (1.40%)</span>`;
     document.getElementById('link-price').innerHTML = 
       `${data.chainlink.eur.toLocaleString()} € <span class="price-change">+0.30 € (1.10%)</span>`;
+    
+    // Update Portfolio Values
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+      currentUser.portfolio.forEach(item => {
+        const coinId = item.coin.toLowerCase().replace(' ', '-');
+        const price = data[coinId] ? data[coinId].eur : 0;
+        item.value = item.amount * price;
+      });
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      const userIndex = usersDB.findIndex(user => user.username === currentUser.username);
+      usersDB[userIndex] = currentUser;
+      localStorage.setItem('users', JSON.stringify(usersDB));
+      displayDashboard();
+    }
   })
   .catch(error => console.error('Error fetching prices:', error));
 
@@ -75,3 +302,6 @@ document.querySelectorAll('.carousel-item').forEach(item => {
     window.location.href = `coins.html?coin=${coin}`;
   });
 });
+
+// Check Login on Page Load
+window.onload = checkLogin;
