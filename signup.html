@@ -3,60 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up - Crypto Wealth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <title>Crypto Wealth - Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
-    </div>
+    <div class="logo">CRYPTO WEALTH</div>
     <nav>
       <a href="index.html" class="nav-item">Home</a>
-      <a href="dashboard.html" class="nav-item">Dashboard</a>
-      <a href="news.html" class="nav-item">News</a>
-      <a href="faq.html" class="nav-item">FAQ</a>
-      <a href="blog.html" class="nav-item">Blog</a>
-      <a href="legal.html" class="nav-item">Legal</a>
-      <a href="risk.html" class="nav-item">Risk</a>
-      <a href="contact.html" class="nav-item">Contact</a>
+      <a href="#" class="nav-item">Features</a>
+      <a href="#" class="nav-item">Pricing</a>
+      <a href="login.html" class="nav-item">Login</a>
+      <a href="support.html" class="nav-item">Support</a>
     </nav>
-    <div class="auth-buttons">
-      <a href="login.html" class="btn secondary">Login</a>
-      <a href="signup.html" class="btn primary active">Sign Up</a>
-    </div>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <a href="signup.html" class="btn secondary active">Sign Up Free</a>
   </header>
 
-  <main>
-    <section class="auth-section">
-      <h2>Create Your Account</h2>
-      <form id="signup-form">
-        <input type="text" id="signup-name" placeholder="Full Name" required>
-        <input type="email" id="signup-email" placeholder="Email Address" required>
-        <input type="password" id="signup-password" placeholder="Password" required>
-        <button type="submit" class="btn primary">Sign Up</button>
+  <main class="signup-main">
+    <div class="signup-card">
+      <h1>SIGN UP <span>NOW</span></h1>
+      <form>
+        <input type="text" placeholder="Full Name" value="Emma Smith" required>
+        <input type="email" placeholder="Email Address" value="emma@crypto.com" required>
+        <input type="password" placeholder="Password" value="" required>
+        <button type="submit" class="btn primary">SIGN UP</button>
       </form>
-      <p>Already have an account? <a href="login.html">Login</a></p>
-    </section>
+      <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+    </div>
   </main>
 
   <footer>
-    <div class="footer-links">
-      <a href="risk.html">Risk Disclosure</a> |
-      <a href="legal.html">Legal</a> |
-      <a href="faq.html">FAQ</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="contact.html">Contact</a>
+    <div class="footer-bar">
+      <p>© 2025 Crypto Wealth | All Rights Reserved</p>
     </div>
-    <div class="social-links">
-      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
-      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
-    </div>
-    <p>© 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
