@@ -11,81 +11,42 @@
   <header>
     <div class="logo">
       <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
-      <span>Crypto Wealth</span>
+      <span>CRYPTO WEALTH</span>
     </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="learn.html">Learn</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="auth">
-      <a href="#" class="btn btn-logout">Logout</a>
+      <button id="logout-btn" class="btn btn-login">Logout</button>
     </div>
   </header>
   <main>
-    <section class="dashboard">
-      <h1>Your Crypto Portfolio</h1>
-      <div class="portfolio-summary">
-        <div class="card">
-          <h3>Total Balance</h3>
-          <p class="balance">€10,245.36</p>
-        </div>
-        <div class="card">
-          <h3>24h Change</h3>
-          <p class="change positive">+2.45%</p>
-        </div>
-      </div>
-      <div class="portfolio-assets">
-        <h2>Your Assets</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Asset</th>
-              <th>Amount</th>
-              <th>Value</th>
-              <th>Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Bitcoin</td>
-              <td>0.5 BTC</td>
-              <td>€18,245</td>
-              <td class="positive">+3.2%</td>
-            </tr>
-            <tr>
-              <td>Ethereum</td>
-              <td>12 ETH</td>
-              <td>€7,860</td>
-              <td class="negative">-1.1%</td>
-            </tr>
-            <tr>
-              <td>Solana</td>
-              <td>50 SOL</td>
-              <td>€4,200</td>
-              <td class="positive">+5.6%</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="alerts">
-        <h2>Alerts</h2>
-        <div class="alert-card">
-          <p>Bitcoin price above €35,000</p>
-          <span class="alert-time">Today, 10:30 AM</span>
-        </div>
-        <div class="alert-card">
-          <p>Ethereum volatility detected</p>
-          <span class="alert-time">Yesterday, 4:15 PM</span>
-        </div>
-      </div>
+    <section class="dashboard-hero">
+      <h1>Welcome, <span id="dashboard-name"></span>!</h1>
+      <p>Email: <span id="dashboard-email"></span></p>
+      <p>Member since: <span id="dashboard-joined"></span></p>
+    </section>
+    <section class="dashboard-balance">
+      <h2>Total Portfolio Value</h2>
+      <div class="balance" id="dashboard-balance">$0.00</div>
+    </section>
+    <section class="dashboard-portfolio-section">
+      <h2>Your Portfolio</h2>
+      <div id="dashboard-portfolio" class="dashboard-portfolio"></div>
+    </section>
+    <section class="dashboard-news-section">
+      <h2>Latest Crypto News</h2>
+      <div id="dashboard-news"></div>
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+    <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
 </body>
