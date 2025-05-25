@@ -2,56 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>Dashboard - Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <!-- ... same header as homepage ... -->
-  </header>
-  <main>
-    <section class="dashboard-hero">
-      <div class="dashboard-user">
-        <h2>Hello, <span id="dashboard-name"></span></h2>
-        <p class="dashboard-email" id="dashboard-email"></p>
-        <p class="dashboard-joined">Member since: <span id="dashboard-joined"></span></p>
-      </div>
-      <div class="dashboard-balance">
-        <div class="balance-label">Total Balance</div>
-        <div class="balance-amount" id="dashboard-balance">$0.00</div>
-        <div class="dashboard-actions">
-          <button class="btn btn-primary" id="send-btn">Send</button>
-          <button class="btn btn-primary" id="receive-btn">Receive</button>
-        </div>
-      </div>
-    </section>
-    <section class="dashboard-alerts">
-      <h3>Alerts</h3>
-      <div class="alert-list" id="dashboard-alerts">
-        <div class="alert-card">No new alerts.</div>
-      </div>
-    </section>
-    <section class="dashboard-portfolio-section">
-      <h3>Your Portfolio</h3>
-      <div id="dashboard-portfolio" class="dashboard-portfolio"></div>
-    </section>
-    <section class="dashboard-history-section">
-      <h3>Transaction History</h3>
-      <div id="dashboard-history" class="dashboard-history"></div>
-    </section>
-    <section class="dashboard-news-section">
-      <h3>Latest Crypto News</h3>
-      <div id="dashboard-news"></div>
-    </section>
-    <div class="dashboard-logout">
-      <button id="logout-btn" class="btn btn-login">Logout</button>
+    <div class="logo">
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
     </div>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item active">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="blog.html" class="nav-item">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item">Risk</a>
+      <a href="contact.html" class="nav-item">Contact</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Logout</a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <main>
+    <section class="dashboard-section">
+      <h2>Your Dashboard</h2>
+      <div class="dashboard-card" id="dashboard-card">
+        <h3>Welcome, Guest</h3>
+        <p>Account Balance: $0.00</p>
+        <p>Total Investments: $0.00</p>
+        <p>Recent Transactions: None</p>
+      </div>
+    </section>
   </main>
+
   <footer>
-    <!-- ... same footer as homepage ... -->
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
