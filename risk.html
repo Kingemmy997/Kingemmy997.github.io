@@ -2,69 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Risk | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk Disclosure - Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="https://picsum.photos/40/40" alt="Crypto Wealth Logo">
-      <span>CRYPTO WEALTH</span>
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
     </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="legal.html">Legal</a></li>
-        <li><a href="risk.html" class="active">Risk</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="blog.html" class="nav-item">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item active">Risk</a>
+      <a href="contact.html" class="nav-item">Contact</a>
     </nav>
-    <div class="auth">
-      <a href="login.html" class="btn btn-login">Login</a>
-      <a href="signup.html" class="btn btn-signup">Sign Up</a>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
     </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
+
   <main>
-    <div class="risk-card">
+    <section class="content-section">
       <h2>Risk Disclosure</h2>
-      <p>
-        Investing in cryptocurrencies involves significant risk. Prices can be volatile and you may lose your entire investment. Only invest what you can afford to lose.
-      </p>
-      <h3>Market Risk</h3>
-      <p>
-        Crypto assets are subject to high market risk and price volatility. Past performance is not a guarantee of future results.
-      </p>
-      <h3>Regulatory Risk</h3>
-      <p>
-        Regulations regarding cryptocurrencies may change at any time and can impact your ability to use or trade crypto assets.
-      </p>
-      <h3>Security Risk</h3>
-      <p>
-        While we take every precaution, no system is immune to hacking or fraud. Always use strong passwords and enable two-factor authentication.
-      </p>
-      <p>
-        If you have questions about risk, contact <a href="mailto:risk@cryptowealth.com">risk@cryptowealth.com</a>.
-      </p>
-    </div>
+      <p>Investing in cryptocurrencies involves significant risks, including the potential loss of your entire investment. Prices are highly volatile and can fluctuate widely.</p>
+      <p>Crypto Wealth does not provide financial advice. Always conduct your own research before investing.</p>
+    </section>
   </main>
+
   <footer>
-    <div>
-      <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
-      <p>
-        Contact: <a href="mailto:info@cryptowealth.com">info@cryptowealth.com</a> |
-        WhatsApp: <a href="https://wa.me/2349035924358" target="_blank">+2349035924358</a>
-      </p>
-      <p>
-        <a href="legal.html">Legal</a> | <a href="risk.html" class="active">Risk</a> | <a href="faq.html">FAQ</a>
-      </p>
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
     </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
