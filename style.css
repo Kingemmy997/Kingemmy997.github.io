@@ -1667,7 +1667,10 @@ textarea.error-input {
 .learn-section,
 .wallet-section,
 .transactions-section,
-.settings-section {
+.settings-section,
+.auth-section,
+.not-found-section,
+.learn-page-section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -1683,7 +1686,10 @@ textarea.error-input {
 .learn-section.visible,
 .wallet-section.visible,
 .transactions-section.visible,
-.settings-section.visible {
+.settings-section.visible,
+.auth-section.visible,
+.not-found-section.visible,
+.learn-page-section.visible {
     opacity: 1;
     transform: translateY(0);
 }
