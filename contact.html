@@ -4,36 +4,34 @@
   <meta charset="UTF-8">
   <title>Contact | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <!-- ... same header as homepage ... -->
-  </header>
+  <header> ... (same as index.html) ... </header>
   <main>
     <section class="form-section">
       <form class="form-card" id="contact-form">
         <h2>Contact Us</h2>
         <div class="form-group">
           <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" required placeholder="Your Name">
+          <input type="text" id="contact-name" class="form-control" required placeholder="Your Name">
         </div>
         <div class="form-group">
           <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" required placeholder="Your Email">
+          <input type="email" id="contact-email" class="form-control" required placeholder="Your Email">
         </div>
         <div class="form-group">
           <label for="contact-message">Message</label>
-          <textarea id="contact-message" required placeholder="How can we help you?" rows="4"></textarea>
+          <textarea id="contact-message" class="form-control" required placeholder="How can we help you?" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        <div style="margin-top:1rem;">
+          Or WhatsApp us: <a href="https://wa.me/2349035924358" target="_blank">+2349035924358</a>
+        </div>
       </form>
     </section>
   </main>
-  <footer>
-    <!-- ... same footer as homepage ... -->
-  </footer>
+  <footer> ... (same as index.html) ... </footer>
   <script src="script.js"></script>
 </body>
 </html>
