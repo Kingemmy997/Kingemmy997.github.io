@@ -1,85 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wealth - Secure Your Crypto Future</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="logo">CRYPTO WEALTH</div>
-    <nav>
-      <a href="index.html" class="nav-item active">Home</a>
-      <a href="blog.html" class="nav-item">Blog</a>
-      <a href="faq.html" class="nav-item">FAQ</a>
-      <a href="contact.html" class="nav-item">Contact</a>
-      <a href="legal.html" class="nav-item">Legal</a>
-      <a href="login.html" class="nav-item">Login</a>
-    </nav>
-    <a href="signup.html" class="btn secondary">Sign Up</a>
-  </header>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Crypto Wealth</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-transparent">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <main class="index-main">
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Secure Crypto Solutions</h1>
-        <p>Track, trade, and manage your crypto with ease and security.</p>
-        <div class="hero-actions">
-          <a href="signup.html" class="btn primary">Get Started</a>
-          <a href="#" class="btn secondary">Learn More</a>
-        </div>
-      </div>
-    </section>
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Secure Your Success with Smart Crypto Solutions</h1>
+                    <p>Join millions of users who trust our platform for real-time tracking, secure storage, and seamless transactions.</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-primary">Get Started</a>
+                        <a href="#" class="btn btn-secondary">Watch Video</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/hero-orb.png" alt="Crypto Wealth Orb">
+                </div>
+            </div>
+        </section>
 
-    <section class="features-section">
-      <h2>Why Choose Us</h2>
-      <div class="features-container">
-        <div class="feature-card">
-          <h3>Real-Time Data</h3>
-          <p>Live market trends and analytics.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Top Security</h3>
-          <p>Advanced encryption for safety.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Easy Integration</h3>
-          <p>Seamless API for developers.</p>
-        </div>
-      </div>
-    </section>
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Powerful Features for Smart Crypto Management</h2>
+                <div class="features-grid">
+                    <div class="feature-card large-card">
+                        <h3>Real-Time Market Insights</h3>
+                        <p>Access live data, charts, and analytics to make informed decisions.</p>
+                        <div class="chart-container">
+                            <canvas id="marketPriceChart"></canvas>
+                            <p id="chartStatus" style="position: absolute; color: var(--color-text-dim);"></p>
+                        </div>
+                    </div>
+                    <div class="feature-card small-card">
+                        <h3>Secure & Private</h3>
+                        <p>Keep your data safe with advanced encryption and robust security measures.</p>
+                        <img src="images/secure-icon.png" alt="Secure Icon">
+                    </div>
+                    <div class="feature-card small-card">
+                        <h3>Seamless API & Export</h3>
+                        <p>Integrate your data easily with our comprehensive API or export reports.</p>
+                        <img src="images/api-icon.png" alt="API Icon">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="pricing-section">
-      <h2>Our Plans</h2>
-      <div class="pricing-container">
-        <div class="pricing-card">
-          <h3>Basic</h3>
-          <p>Free</p>
-          <ul>
-            <li>Real-time data</li>
-            <li>Basic analytics</li>
-          </ul>
-          <a href="signup.html" class="btn primary">Start Now</a>
-        </div>
-        <div class="pricing-card">
-          <h3>Pro</h3>
-          <p>$9.99/mo</p>
-          <ul>
-            <li>Advanced analytics</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="signup.html" class="btn primary">Start Now</a>
-        </div>
-      </div>
-    </section>
-  </main>
+        <section id="insights" class="insights-section">
+            <div class="container">
+                <h2>Crypto Research & Insights</h2>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Insight Title 1</h3>
+                        <p>Brief description of the insight or research topic...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Insight Title 2</h3>
+                        <p>Brief description of the insight or research topic...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Insight Title 3</h3>
+                        <p>Brief description of the insight or research topic...</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <div class="footer-bar">
-      <p>© 2025 Crypto Wealth | All Rights Reserved</p>
-    </div>
-  </footer>
+        <section id="pricing" class="pricing-section">
+            <div class="container">
+                <h2>Pricing Plans</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Free</h3>
+                        <p class="price">Free</p>
+                        <ul>
+                            <li>Basic features</li>
+                            <li>Limited tracking</li>
+                            <li>Community support</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-primary">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card recommended">
+                        <h3>Pro</h3>
+                        <p class="price">$9.99<span>/month</span></p>
+                        <ul>
+                            <li>All basic features</li>
+                            <li>Advanced tracking</li>
+                            <li>Priority support</li>
+                            <li>API Access</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-primary">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Enterprise</h3>
+                        <p class="price">Custom</p>
+                        <ul>
+                            <li>All Pro features</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom integrations</li>
+                            <li>24/7 Premium support</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2>Frequently Asked Questions (FAQ)</h2>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is Crypto Wealth?</h3>
+                        <div class="faq-answer">
+                            <p>Crypto Wealth is a platform designed to help you manage your cryptocurrency investments with real-time insights, secure storage, and seamless transactions.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">How secure is my data?</h3>
+                        <div class="faq-answer">
+                            <p>We use state-of-the-art encryption and security protocols to ensure your data and assets are always protected.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">Do you support all cryptocurrencies?</h3>
+                        <div class="faq-answer">
+                            <p>We support a wide range of popular cryptocurrencies and are continuously adding more. Check our platform for the full list.</p>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Crypto Wealth</h3>
+                    <p>&copy; 2023 Crypto Wealth. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
