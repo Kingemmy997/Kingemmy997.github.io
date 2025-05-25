@@ -1,60 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - Crypto Wealth</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crypto Wealth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
-    </div>
-    <nav>
-      <a href="index.html" class="nav-item">Home</a>
-      <a href="dashboard.html" class="nav-item active">Dashboard</a>
-      <a href="news.html" class="nav-item">News</a>
-      <a href="faq.html" class="nav-item">FAQ</a>
-      <a href="blog.html" class="nav-item">Blog</a>
-      <a href="legal.html" class="nav-item">Legal</a>
-      <a href="risk.html" class="nav-item">Risk</a>
-      <a href="contact.html" class="nav-item">Contact</a>
-    </nav>
-    <div class="auth-buttons">
-      <a href="login.html" class="btn secondary">Logout</a>
-    </div>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  </header>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Crypto Wealth</a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="#">Wallet</a></li>
+                    <li><a href="#">Transactions</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button id="logoutButton" class="btn btn-primary logout-button">Logout</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-nav-menu">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Wallet</a></li>
+                <li><a href="#">Transactions</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button id="mobileLogoutButton" class="btn btn-primary logout-button">Logout</button>
+            </div>
+        </div>
+    </header>
 
-  <main>
-    <section class="dashboard-section">
-      <h2>Your Dashboard</h2>
-      <div class="dashboard-card" id="dashboard-card">
-        <h3>Welcome, Guest</h3>
-        <p>Account Balance: $0.00</p>
-        <p>Total Investments: $0.00</p>
-        <p>Recent Transactions: None</p>
-      </div>
-    </section>
-  </main>
+    <main>
+        <section id="dashboardSection" class="dashboard-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1 class="welcome-message">Welcome, <span id="userName">User</span>!</h1>
+                    <button id="logoutButton" class="btn btn-primary logout-button">Logout</button>
+                </div>
 
-  <footer>
-    <div class="footer-links">
-      <a href="risk.html">Risk Disclosure</a> |
-      <a href="legal.html">Legal</a> |
-      <a href="faq.html">FAQ</a> |
-      <a href="blog.html">Blog</a> |
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="social-links">
-      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
-      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
-    </div>
-    <p>© 2025 Crypto Wealth. All rights reserved.</p>
-  </footer>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Total Portfolio Value</h3>
+                        <p class="portfolio-summary"><span id="portfolioValue">$0.00</span></p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>My Assets</h3>
+                        <div class="asset-list">
+                            <ul id="assetList">
+                                </ul>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <ul>
+                                <li>Bought 0.05 BTC - <span style="color: var(--color-green-primary);">+$2,500</span></li>
+                                <li>Sold 2 ETH - <span style="color: #FF4C4C;">-$6,000</span></li>
+                                <li>Received 10 ADA - <span style="color: var(--color-green-primary);">+$3</span></li>
+                                <li>Withdrawal $100.00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-  <script src="script.js"></script>
+                <section class="insights-section" style="background-color: var(--color-dark-bg);">
+                    <div class="container">
+                        <h2>Personalized Insights</h2>
+                        <div class="insights-grid">
+                            <div class="insight-card">
+                                <h3>Market Trends for Your Portfolio 📊</h3>
+                                <p>Get tailored insights based on your holdings.</p>
+                                <a href="#" class="read-more">View Report</a>
+                            </div>
+                            <div class="insight-card">
+                                <h3>New Asset Alerts 🔔</h3>
+                                <p>Discover new cryptocurrencies relevant to your interests.</p>
+                                <a href="#" class="read-more">Explore Coins</a>
+                            </div>
+                            <div class="insight-card">
+                                <h3>Risk Assessment Score 📉</h3>
+                                <p>Understand and manage the risk profile of your portfolio.</p>
+                                <a href="#" class="read-more">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Crypto Wealth</h3>
+                    <p>&copy; 2023 Crypto Wealth. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
