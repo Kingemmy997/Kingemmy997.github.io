@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Wealth | Market News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
+      <span>Crypto Wealth</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth">
+      <a href="login.html" class="btn btn-login">Login</a>
+      <a href="signup.html" class="btn btn-signup">Sign Up</a>
+    </div>
+  </header>
+  <main>
+    <section class="news">
+      <h1>Live Market News & Insights</h1>
+      <div id="live-news">
+        <p>Loading latest crypto news...</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+  </footer>
+  <script>
+    // Replace YOUR_API_TOKEN with your CryptoPanic API key
+    async function fetchCryptoNews() {
+      try {
+        const response = await fetch('https://cryptopanic.com/api/v1/posts/?auth_token=YOUR_API_TOKEN&public=true');
+        const data = await response.json();
+        const newsSection = document.getElementById('live-news');
+        newsSection.innerHTML = '<h2>Latest Crypto News</h2>';
+        data.results.slice(0, 5).forEach(article => {
+          newsSection.innerHTML += `<div class="news-card"><h3>${article.title}</h3><p><a href="${article.url}" target="_blank">Read more</a></p></div>`;
+        });
+      } catch (error) {
+        document.getElementById('live-news').innerHTML = '<p>Unable to load news. Please try again later.</p>';
+        console.error('Error fetching news:', error);
+      }
+    }
+    fetchCryptoNews();
+  </script>
+</body>
+</html>
