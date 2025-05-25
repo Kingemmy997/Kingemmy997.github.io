@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Sign Up</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Crypto Wealth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header>
-    <div class="logo">CRYPTO WEALTH</div>
-    <nav>
-      <a href="index.html" class="nav-item">Home</a>
-      <a href="#" class="nav-item">Features</a>
-      <a href="#" class="nav-item">Pricing</a>
-      <a href="login.html" class="nav-item">Login</a>
-      <a href="support.html" class="nav-item">Support</a>
-    </nav>
-    <a href="signup.html" class="btn secondary active">Sign Up Free</a>
-  </header>
-
-  <main class="signup-main">
-    <div class="signup-card">
-      <h1>SIGN UP <span>NOW</span></h1>
-      <form>
-        <input type="text" placeholder="Full Name" value="Emma Smith" required>
-        <input type="email" placeholder="Email Address" value="emma@crypto.com" required>
-        <input type="password" placeholder="Password" value="" required>
-        <button type="submit" class="btn primary">SIGN UP</button>
-      </form>
-      <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Create Your Crypto Wealth Account</h2>
+            <form action="#" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            </form>
+            <p class="auth-footer-text">Already have an account? <a href="login.html">Sign In</a></p>
+        </div>
     </div>
-  </main>
-
-  <footer>
-    <div class="footer-bar">
-      <p>© 2025 Crypto Wealth | All Rights Reserved</p>
-    </div>
-  </footer>
+    <script src="script.js"></script>
 </body>
 </html>
