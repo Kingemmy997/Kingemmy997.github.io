@@ -2,51 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crypto Wealth | Dashboard</title>
+  <title>Dashboard | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
-      <span>CRYPTO WEALTH</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html" class="active">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="auth">
-      <button id="logout-btn" class="btn btn-login">Logout</button>
-    </div>
+    <!-- ... same header as homepage ... -->
   </header>
   <main>
     <section class="dashboard-hero">
-      <h1>Welcome, <span id="dashboard-name"></span>!</h1>
-      <p>Email: <span id="dashboard-email"></span></p>
-      <p>Member since: <span id="dashboard-joined"></span></p>
+      <div class="dashboard-user">
+        <h2>Hello, <span id="dashboard-name"></span></h2>
+        <p class="dashboard-email" id="dashboard-email"></p>
+        <p class="dashboard-joined">Member since: <span id="dashboard-joined"></span></p>
+      </div>
+      <div class="dashboard-balance">
+        <div class="balance-label">Total Balance</div>
+        <div class="balance-amount" id="dashboard-balance">$0.00</div>
+        <div class="dashboard-actions">
+          <button class="btn btn-primary" id="send-btn">Send</button>
+          <button class="btn btn-primary" id="receive-btn">Receive</button>
+        </div>
+      </div>
     </section>
-    <section class="dashboard-balance">
-      <h2>Total Portfolio Value</h2>
-      <div class="balance" id="dashboard-balance">$0.00</div>
+    <section class="dashboard-alerts">
+      <h3>Alerts</h3>
+      <div class="alert-list" id="dashboard-alerts">
+        <div class="alert-card">No new alerts.</div>
+      </div>
     </section>
     <section class="dashboard-portfolio-section">
-      <h2>Your Portfolio</h2>
+      <h3>Your Portfolio</h3>
       <div id="dashboard-portfolio" class="dashboard-portfolio"></div>
     </section>
+    <section class="dashboard-history-section">
+      <h3>Transaction History</h3>
+      <div id="dashboard-history" class="dashboard-history"></div>
+    </section>
     <section class="dashboard-news-section">
-      <h2>Latest Crypto News</h2>
+      <h3>Latest Crypto News</h3>
       <div id="dashboard-news"></div>
     </section>
+    <div class="dashboard-logout">
+      <button id="logout-btn" class="btn btn-login">Logout</button>
+    </div>
   </main>
   <footer>
-    <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
+    <!-- ... same footer as homepage ... -->
   </footer>
   <script src="script.js"></script>
 </body>
