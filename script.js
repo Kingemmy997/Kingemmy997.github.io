@@ -1,21 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize features based on the current page
   if (document.getElementById('carousel')) initCarousel();
   if (document.querySelector('.market-section')) fetchCryptoPrices();
-  if (document.getElementById('dashboard-card')) displayUserDashboard();
   if (document.getElementById('news-container')) fetchCryptoNews();
-  if (document.getElementById('login-form')) handleLogin();
-  if (document.getElementById('signup-form')) handleSignup();
-  if (document.getElementById('contact-form')) handleContactForm();
 });
 
-// Navigation menu toggle
 function toggleMenu() {
   const nav = document.querySelector('nav');
   nav.classList.toggle('active');
 }
 
-// Carousel functionality
 let currentSlide = 0;
 function initCarousel() {
   const slides = document.querySelectorAll('.carousel-item');
@@ -43,7 +36,6 @@ function prevSlide() {
   showSlide(currentSlide);
 }
 
-// Fetch and display live crypto prices
 async function fetchCryptoPrices() {
   const coins = [
     { id: 'bitcoin', element: 'crypto-card-1' },
@@ -77,19 +69,6 @@ async function fetchCryptoPrices() {
   }
 }
 
-// Display personalized dashboard
-function displayUserDashboard() {
-  const user = JSON.parse(localStorage.getItem('user')) || { id: 'guest', name: 'Guest', balance: 0 };
-  const dashboard = document.getElementById('dashboard-card');
-  dashboard.innerHTML = `
-    <h3>Welcome, ${user.name}</h3>
-    <p>Account Balance: $${user.balance.toFixed(2)}</p>
-    <p>Total Investments: $${user.balance.toFixed(2)}</p>
-    <p>Recent Transactions: None</p>
-  `;
-}
-
-// Fetch and display crypto news
 async function fetchCryptoNews() {
   const newsContainer = document.getElementById('news-container');
   try {
@@ -105,59 +84,4 @@ async function fetchCryptoNews() {
     newsContainer.innerHTML = '<p>Unable to load news. Please try again later.</p>';
     console.error('Error fetching news:', error);
   }
-}
-
-// Handle login
-function handleLogin() {
-  const form = document.getElementById('login-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(u => u.email === email && u.password === password);
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      window.location.href = 'dashboard.html';
-    } else {
-      alert('Invalid email or password.');
-    }
-  });
-}
-
-// Handle sign-up
-function handleSignup() {
-  const form = document.getElementById('signup-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    if (users.find(u => u.email === email)) {
-      alert('Email already registered.');
-      return;
-    }
-    const user = { id: Date.now(), name, email, password, balance: 0 };
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('user', JSON.stringify(user));
-    window.location.href = 'dashboard.html';
-  });
-}
-
-// Handle contact form
-function handleContactForm() {
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Message sent successfully!');
-    form.reset();
-  });
-}
-
-// FAQ toggle
-function toggleFAQ(element) {
-  const faqItem = element.parentElement;
-  faqItem.classList.toggle('active');
 }
