@@ -2,36 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header> ... (same as index.html) ... </header>
+  <header>
+    <div class="logo">
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
+    </div>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="blog.html" class="nav-item">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item">Risk</a>
+      <a href="contact.html" class="nav-item active">Contact</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+
   <main>
-    <section class="form-section">
-      <form class="form-card" id="contact-form">
-        <h2>Contact Us</h2>
-        <div class="form-group">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" class="form-control" required placeholder="Your Name">
-        </div>
-        <div class="form-group">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" class="form-control" required placeholder="Your Email">
-        </div>
-        <div class="form-group">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" class="form-control" required placeholder="How can we help you?" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-        <div style="margin-top:1rem;">
-          Or WhatsApp us: <a href="https://wa.me/2349035924358" target="_blank">+2349035924358</a>
-        </div>
+    <section class="contact-section">
+      <h2>Contact Us</h2>
+      <p>Reach out to us via the form below or through our social channels.</p>
+      <form id="contact-form">
+        <input type="text" id="contact-name" placeholder="Full Name" required>
+        <input type="email" id="contact-email" placeholder="Email Address" required>
+        <textarea id="contact-message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn primary">Send Message</button>
       </form>
+      <div class="social-links">
+        <a href="https://wa.me/1234567890" target="_blank" class="btn secondary">Chat on WhatsApp</a>
+        <a href="https://twitter.com/cryptowealth" target="_blank" class="btn secondary">Follow on Twitter</a>
+      </div>
     </section>
   </main>
-  <footer> ... (same as index.html) ... </footer>
+
+  <footer>
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
-</html>
+                                </html>
