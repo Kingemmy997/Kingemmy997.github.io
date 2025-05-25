@@ -13,7 +13,7 @@
             <nav class="navbar">
                 <a href="index.html" class="logo">Crypto Wealth</a>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -22,7 +22,24 @@
                     <a href="login.html" class="btn btn-transparent">Sign In</a>
                     <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
                 </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
+        </div>
+        <div class="mobile-nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-transparent">Sign In</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up For Free</a>
+            </div>
         </div>
     </header>
 
@@ -50,9 +67,10 @@
                     <div class="feature-card large-card">
                         <h3>Real-Time Market Insights</h3>
                         <p>Access live data, charts, and analytics to make informed decisions.</p>
-                        <div class="chart-container">
-                            <canvas id="marketPriceChart"></canvas>
-                            <p id="chartStatus"></p> </div>
+                        <div class="crypto-carousel-container">
+                            <div id="cryptoCarousel" class="crypto-carousel">
+                                </div>
+                            <p id="carouselStatus"></p> </div>
                     </div>
                     <div class="feature-card small-card">
                         <img src="images/secure-icon.png" alt="Secure Icon">
@@ -193,7 +211,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
