@@ -2,20 +2,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
   background: #1A1A1A;
   color: white;
+  line-height: 1.6;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 20px 30px;
   background: #2A2A2A;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .logo img {
@@ -25,72 +29,91 @@ header {
 .btn {
   background: #FFD700;
   color: #1A1A1A;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   border: none;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .menu-icon {
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
+  display: none;
 }
 
 .menu {
   display: none;
   position: absolute;
-  top: 70px;
-  right: 15px;
+  top: 80px;
+  right: 30px;
   background: #2A2A2A;
   padding: 20px;
   border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .menu a {
   display: block;
   color: white;
-  padding: 10px 0;
+  padding: 12px 20px;
   text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s;
 }
 
-.carousel-section, .feature-section, .signup-section, .dashboard-section, .trade-section, .plan-section, .support-section, .metals-section, .indices-section, .card-section, .token-section {
-  padding: 20px;
+.menu a:hover {
+  background: #3A3A3A;
+}
+
+.hero-section, .feature-section, .signup-section {
+  padding: 40px;
   background: #2A2A2A;
-  margin: 10px;
+  margin: 20px auto;
   border-radius: 10px;
+  max-width: 600px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
 p {
   font-size: 16px;
   color: #ccc;
+  margin-bottom: 20px;
 }
 
 .carousel {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 15px;
-  padding: 20px;
+  gap: 20px;
+  padding: 20px 0;
   border-radius: 10px;
+  justify-content: center;
 }
 
 .carousel-item {
-  flex: 0 0 80%;
+  flex: 0 0 300px;
   scroll-snap-align: start;
   background: #fff;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   color: #1A1A1A;
+  min-height: 250px;
 }
 
 .price-change {
@@ -103,16 +126,16 @@ p {
 
 .carousel-dots {
   text-align: center;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .dot {
-  height: 10px;
-  width: 10px;
+  height: 12px;
+  width: 12px;
   background: #ccc;
   border-radius: 50%;
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 8px;
   cursor: pointer;
 }
 
@@ -121,65 +144,40 @@ p {
 }
 
 .chart-placeholder {
-  height: 100px;
-}
-
-.signup-section a, .dashboard-section a, .trade-section a, .support-section a {
-  color: #FFD700;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-input, select, button {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-button {
-  background: #FFD700;
-  color: #1A1A1A;
-  cursor: pointer;
-}
-
-table {
+  height: 120px;
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
 }
 
-th, td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-}
-
-th {
-  background: #3A3A3A;
+.signup-section a {
+  color: #FFD700;
 }
 
 footer {
   text-align: center;
   padding: 20px;
   color: #ccc;
+  background: #2A2A2A;
+  margin-top: 20px;
 }
 
 footer a {
   color: #FFD700;
-  margin: 0 5px;
+  margin: 0 10px;
   text-decoration: none;
 }
 
 @media (max-width: 600px) {
-  .carousel-item {
-    flex: 0 0 90%;
+  .menu-icon {
+    display: block;
   }
-  .btn {
-    padding: 8px 16px;
+  .menu {
+    right: 20px;
+  }
+  .hero-section, .feature-section, .signup-section {
+    padding: 20px;
+    max-width: 100%;
+  }
+  .carousel-item {
+    flex: 0 0 250px;
   }
 }
