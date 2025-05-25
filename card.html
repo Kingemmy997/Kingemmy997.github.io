@@ -3,52 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Wealth Card</title>
+  <title>Wealth Card - Crypto Wealth</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
-    </div>
+    <div class="logo"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></div>
     <a href="signup.html" class="btn">Sign-up</a>
-    <div class="menu-icon" onclick="openMenu()">☰</div>
-    <div id="menu" class="menu">
-      <a href="portfolio.html">Portfolio</a>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="menu" class="menu">
+      <a href="index.html">Home</a>
       <a href="trade.html">Trade</a>
-      <a href="wealth-plan.html">Wealth Plan</a>
-      <a href="support.html">Support</a>
-    </div>
+      <a href="indices.html">Indices</a>
+      <a href="card.html">Wealth Card</a>
+    </nav>
   </header>
 
-  <section class="card-section">
-    <h2>Wealth Card</h2>
+  <section class="hero">
+    <h1>Wealth Card</h1>
     <p>Spend your crypto anywhere with the Crypto Wealth VISA Card.</p>
-    
-    <h3>Features</h3>
-    <ul>
-      <li>Instant crypto-to-fiat conversion at point of sale.</li>
-      <li>Up to 5% cashback in WLT tokens.</li>
-      <li>No annual fees for the first year.</li>
-      <li>Global acceptance at over 50 million merchants.</li>
-    </ul>
-
-    <h3>Apply for Your Card</h3>
-    <form onsubmit="alert('Application submitted! We will contact you soon.'); return false;">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="text" placeholder="Shipping Address" required>
-      <button type="submit">Apply Now</button>
-    </form>
+    <div class="card-form">
+      <h3>Features</h3>
+      <p>Instant crypto-to-fiat conversion at point of sale.</p>
+      <p>Up to 5% cashback in WLT tokens.</p>
+      <p>No annual fees for the first year.</p>
+      <p>Global acceptance at over 50 million merchants.</p>
+      <h3>Apply for Your Card</h3>
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email Address">
+      <input type="text" placeholder="Shipping Address">
+      <button class="btn">Apply Now</button>
+    </div>
   </section>
 
   <footer>
     <a href="risk.html">Risk Disclosure</a> |
     <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a> |
-    <a href="business.html">Business Account</a>
+    <a href="terms.html">Terms</a>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('menu').classList.toggle('active'); }
+  </script>
 </body>
 </html>
