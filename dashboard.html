@@ -3,24 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Crypto Wealth</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Your personalized CryptoPilot dashboard to manage your portfolio, view charts, and recent activity.">
+    <title>CryptoPilot - My Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="container">
             <nav class="navbar">
-                <a href="index.html" class="logo">Crypto Wealth</a>
+                <a href="index.html" class="logo">CryptoPilot</a>
                 <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                    <li><a href="#">Wallet</a></li>
-                    <li><a href="#">Transactions</a></li>
-                    <li><a href="#">Settings</a></li>
+                    <li><a href="wallet.html">Wallet</a></li>
+                    <li><a href="transactions.html">Transactions</a></li>
+                    <li><a href="learn.html">Learn</a></li>
+                    <li><a href="settings.html">Settings</a></li>
+                    <li><a href="contact.html">Support</a></li>
                 </ul>
                 <div class="auth-buttons">
-                    <button id="logoutButton" class="btn btn-primary logout-button">Logout</button>
-                </div>
+                    <button id="logout-btn" class="btn btn-transparent">Logout</button>
+                    </div>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -28,74 +35,85 @@
                 </div>
             </nav>
         </div>
-        <div class="mobile-nav-menu">
-            <ul>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="#">Wallet</a></li>
-                <li><a href="#">Transactions</a></li>
-                <li><a href="#">Settings</a></li>
-            </ul>
-            <div class="auth-buttons">
-                <button id="mobileLogoutButton" class="btn btn-primary logout-button">Logout</button>
-            </div>
-        </div>
     </header>
 
+    <div class="mobile-nav-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="wallet.html">Wallet</a></li>
+            <li><a href="transactions.html">Transactions</a></li>
+            <li><a href="learn.html">Learn</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="contact.html">Support</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <button id="logout-btn-mobile" class="btn btn-transparent">Logout</button>
+        </div>
+    </div>
+
     <main>
-        <section id="dashboardSection" class="dashboard-section">
+        <section class="dashboard-section">
             <div class="container">
                 <div class="dashboard-header">
-                    <h1 class="welcome-message">Welcome, <span id="userName">User</span>!</h1>
-                    <button id="logoutButton" class="btn btn-primary logout-button">Logout</button>
+                    <h1>Welcome Back, <span id="user-email">User!</span></h1>
+                    <button id="logout-btn-desktop" class="logout-button">Logout</button>
                 </div>
 
                 <div class="dashboard-grid">
                     <div class="dashboard-card">
                         <h3>Total Portfolio Value</h3>
-                        <p class="portfolio-summary"><span id="portfolioValue">$0.00</span></p>
-                    </div>
-                    <div class="dashboard-card">
-                        <h3>My Assets</h3>
-                        <div class="asset-list">
-                            <ul id="assetList">
-                                </ul>
+                        <p class="portfolio-summary" id="portfolio-total-value">$0.00 <span>USD</span></p>
+                        <div class="chart-container">
+                            <canvas id="portfolioValueChart"></canvas>
                         </div>
                     </div>
+
                     <div class="dashboard-card">
-                        <h3>Recent Activity</h3>
-                        <div class="activity-list">
-                            <ul>
-                                <li>Bought 0.05 BTC - <span style="color: var(--color-green-primary);">+$2,500</span></li>
-                                <li>Sold 2 ETH - <span style="color: #FF4C4C;">-$6,000</span></li>
-                                <li>Received 10 ADA - <span style="color: var(--color-green-primary);">+$3</span></li>
-                                <li>Withdrawal $100.00</li>
-                            </ul>
+                        <h3>Asset Allocation</h3>
+                        <div class="chart-container">
+                            <canvas id="assetAllocationChart"></canvas>
                         </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Your Assets</h3>
+                        <ul class="asset-list" id="asset-list">
+                            <li>Loading assets...</li>
+                        </ul>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Quick Actions</h3>
+                        <div class="portfolio-actions">
+                            <button class="btn btn-primary">Buy</button>
+                            <button class="btn btn-secondary">Sell</button>
+                            <button class="btn btn-primary">Swap</button>
+                        </div>
+                        <p class="general-success-message margin-top-large" id="action-message" style="display:none;"></p>
                     </div>
                 </div>
 
-                <section class="insights-section" style="background-color: var(--color-dark-bg);">
-                    <div class="container">
-                        <h2>Personalized Insights</h2>
-                        <div class="insights-grid">
-                            <div class="insight-card">
-                                <h3>Market Trends for Your Portfolio 📊</h3>
-                                <p>Get tailored insights based on your holdings.</p>
-                                <a href="#" class="read-more">View Report</a>
-                            </div>
-                            <div class="insight-card">
-                                <h3>New Asset Alerts 🔔</h3>
-                                <p>Discover new cryptocurrencies relevant to your interests.</p>
-                                <a href="#" class="read-more">Explore Coins</a>
-                            </div>
-                            <div class="insight-card">
-                                <h3>Risk Assessment Score 📉</h3>
-                                <p>Understand and manage the risk profile of your portfolio.</p>
-                                <a href="#" class="read-more">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <div class="transaction-table-container dashboard-card margin-top-large">
+                    <h3>Recent Activity</h3>
+                    <div class="loading-spinner active"></div>
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Asset</th>
+                                <th>Amount ($)</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-activity-list">
+                            <tr><td colspan="6" class="text-center">Loading transactions...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </section>
     </main>
@@ -104,25 +122,86 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Crypto Wealth</h3>
-                    <p>&copy; 2023 Crypto Wealth. All rights reserved.</p>
+                    <h3>CryptoPilot</h3>
+                    <p>Your trusted partner in the world of digital assets.</p>
+                    <div class="social-media">
+                        <a href="#" target="_blank"><img src="images/socials/facebook.png" alt="Facebook"></a>
+                        <a href="#" target="_blank"><img src="images/socials/twitter.png" alt="Twitter"></a>
+                        <a href="#" target="_blank"><img src="images/socials/linkedin.png" alt="LinkedIn"></a>
+                        <a href="#" target="_blank"><img src="images/socials/instagram.png" alt="Instagram"></a>
+                    </div>
                 </div>
-                <div class="footer-links">
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Sitemap</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="login.html">Sign In</a></li>
+                        <li><a href="signup.html">Sign Up</a></li>
                     </ul>
                 </div>
-                <div class="social-media">
-                    <a href="#"><img src="images/facebook-icon.png" alt="Facebook"></a>
-                    <a href="#"><img src="images/twitter-icon.png" alt="Twitter"></a>
-                    <a href="#"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+
+                <div class="footer-section">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="wallet.html">Wallets</a></li>
+                        <li><a href="transactions.html">Transactions</a></li>
+                        <li><a href="#">Auto-Invest</a></li>
+                        <li><a href="#">Staking</a></li>
+                    </ul>
                 </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="learn.html">Crypto Academy</a></li>
+                        <li><a href="#">Market News</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Whitepapers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2025 CryptoPilot. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Ensure logout buttons in dashboard are active even if script.js loads later
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutBtnDesktop = document.getElementById('logout-btn-desktop');
+            const logoutBtnMobile = document.getElementById('logout-btn-mobile');
+            if (logoutBtnDesktop) {
+                logoutBtnDesktop.addEventListener('click', () => {
+                    localStorage.removeItem('loggedInUser');
+                    window.location.href = 'index.html';
+                });
+            }
+            if (logoutBtnMobile) {
+                logoutBtnMobile.addEventListener('click', () => {
+                    localStorage.removeItem('loggedInUser');
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
