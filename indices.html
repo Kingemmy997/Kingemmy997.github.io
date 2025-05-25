@@ -3,54 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Wealth - Crypto Indices</title>
+  <title>Indices - Crypto Wealth</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <a href="index.html"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></a>
-    </div>
+    <div class="logo"><img src="https://picsum.photos/100/50?random=1" alt="Crypto Wealth Logo"></div>
     <a href="signup.html" class="btn">Sign-up</a>
-    <div class="menu-icon" onclick="openMenu()">☰</div>
-    <div id="menu" class="menu">
-      <a href="portfolio.html">Portfolio</a>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav id="menu" class="menu">
+      <a href="index.html">Home</a>
       <a href="trade.html">Trade</a>
-      <a href="wealth-plan.html">Wealth Plan</a>
-      <a href="support.html">Support</a>
-    </div>
+      <a href="indices.html">Indices</a>
+      <a href="card.html">Wealth Card</a>
+    </nav>
   </header>
 
-  <section class="indices-section">
-    <h2>Crypto Indices</h2>
+  <section class="hero">
+    <h1>Crypto Indices</h1>
     <p>Invest in a diversified portfolio of the top 10 cryptocurrencies with a single click.</p>
-    
-    <h3>Crypto Wealth Index</h3>
-    <p>Our flagship index includes the following cryptocurrencies:</p>
-    <ul>
-      <li>Bitcoin (BTC) - 30%</li>
-      <li>Ethereum (ETH) - 25%</li>
-      <li>BNB - 10%</li>
-      <li>Solana (SOL) - 10%</li>
-      <li>Cardano (ADA) - 5%</li>
-      <li>XRP - 5%</li>
-      <li>Dogecoin (DOGE) - 5%</li>
-      <li>Polkadot (DOT) - 5%</li>
-      <li>Avalanche (AVAX) - 3%</li>
-      <li>Chainlink (LINK) - 2%</li>
-    </ul>
-
-    <p>Performance: +15% YTD</p>
-    <a href="trade.html" class="btn">Invest Now</a>
+    <div class="index-card">
+      <h3>Crypto Wealth Index</h3>
+      <p>Our flagship index includes the following cryptocurrencies:</p>
+      <ul>
+        <li>Bitcoin (BTC) - 30%</li>
+        <li>Ethereum (ETH) - 25%</li>
+        <li>BNB - 10%</li>
+        <li>Solana (SOL) - 10%</li>
+        <li>Cardano (ADA) - 5%</li>
+        <li>XRP - 5%</li>
+        <li>Dogecoin (DOGE) - 5%</li>
+        <li>Polkadot (DOT) - 5%</li>
+        <li>Avalanche (AVAX) - 3%</li>
+        <li>Chainlink (LINK) - 2%</li>
+      </ul>
+      <p>Performance: +15% YTD</p>
+    </div>
   </section>
 
   <footer>
     <a href="risk.html">Risk Disclosure</a> |
     <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a> |
-    <a href="business.html">Business Account</a>
+    <a href="terms.html">Terms</a>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    function toggleMenu() { document.getElementById('menu').classList.toggle('active'); }
+  </script>
 </body>
 </html>
