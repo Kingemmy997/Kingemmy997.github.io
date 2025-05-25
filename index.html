@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crypto Wealth | Secure Crypto Investment Platform</title>
+  <title>Crypto Wealth | Invest in Crypto with Confidence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,10 +11,11 @@
   <header>
     <div class="logo">
       <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
-      <span>Crypto Wealth</span>
+      <span>CRYPTO WEALTH</span>
     </div>
     <nav>
       <ul>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="learn.html">Learn</a></li>
@@ -27,60 +28,45 @@
     </div>
   </header>
   <main>
-    <section class="hero">
-      <h1>Invest with Confidence</h1>
-      <p>Secure, smart, and insightful crypto investing for everyone.</p>
-      <a href="signup.html" class="btn btn-primary">Get Started</a>
-    </section>
-    <section class="carousel-section">
-      <h2>Featured Insights</h2>
-      <div class="carousel" aria-label="Featured content">
-        <button class="carousel-control-prev" aria-label="Previous slide">❮</button>
-        <div class="carousel-items">
-          <div class="carousel-item">
-            <h3>Bank-Grade Security</h3>
-            <p>Your assets are protected with advanced encryption.</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Smart Portfolio</h3>
-            <p>Automated management for optimal returns.</p>
-          </div>
-          <div class="carousel-item">
-            <h3>Market Insights</h3>
-            <p>Real-time analytics at your fingertips.</p>
-          </div>
-        </div>
-        <button class="carousel-control-next" aria-label="Next slide">❯</button>
+    <section class="hero" style="background-image: url('assets/images/hero-bg.jpg');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>Invest in Crypto<br>with Confidence</h1>
+        <p>Trusted by investors worldwide. Start with just $10.</p>
+        <a href="signup.html" class="btn btn-primary">Explore Coins</a>
       </div>
     </section>
     <section class="features">
-      <div class="feature-card">
-        <div class="icon">🛡️</div>
-        <h3>Bank-Grade Security</h3>
-        <p>Your assets are protected with advanced encryption and multi-factor authentication.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📈</div>
-        <h3>Live Market Insights</h3>
-        <p>Real-time analytics and personalized alerts keep you ahead of the market.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🧠</div>
-        <h3>Smart Portfolio</h3>
-        <p>Automated portfolio management and smart rebalancing for optimal returns.</p>
+      <h2>WHY CRYPTO WEALTH?</h2>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Secure</h3>
+          <p>Bank-level encryption & 2FA protection.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>Diverse</h3>
+          <p>Track 500+ coins like BTC, ETH, SOL, and more.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Easy</h3>
+          <p>Instant deposits & withdrawals, seamless investing.</p>
+        </div>
       </div>
     </section>
     <section class="live-prices">
       <h2>Live Crypto Prices</h2>
       <div id="crypto-list"></div>
     </section>
-    <section class="cta">
-      <h2>Ready to grow your wealth?</h2>
-      <a href="signup.html" class="btn btn-primary">Join Crypto Wealth Today</a>
+    <section class="live-news">
+      <h2>Latest Crypto News</h2>
+      <div id="live-news"></div>
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+    <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
   <script src="script.js"></script>
 </body>
