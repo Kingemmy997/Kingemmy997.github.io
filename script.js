@@ -28,21 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavMenu = document.querySelector('.mobile-nav-menu');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileNavMenu.classList.toggle('open');
-        // Prevent body scrolling when mobile menu is open
-        document.body.classList.toggle('no-scroll');
-    });
-
-    // Close mobile menu when a link is clicked
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            mobileNavMenu.classList.remove('open');
-            document.body.classList.remove('no-scroll');
+    if (hamburger && mobileNavMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNavMenu.classList.toggle('open');
+            // Prevent body scrolling when mobile menu is open
+            document.body.classList.toggle('no-scroll');
         });
-    });
+
+        // Close mobile menu when a link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNavMenu.classList.remove('open');
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    }
 
     // --- Real-Time Crypto Coin Carousel ---
     const cryptoCarousel = document.getElementById('cryptoCarousel');
@@ -60,9 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cryptoCarousel.innerHTML = ''; // Clear previous cards
 
         try {
-            // Fetch multiple coins data in one API call for efficiency
-            const ids = cryptoCoinsToFetch.join('%2C'); // Join with URL-encoded comma
-            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`);
+            const ids = cryptoCoinsToFetch.join('%2C');
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h_in_currency`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -78,14 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const change24h = coin.price_change_percentage_24h_in_currency ? coin.price_change_percentage_24h_in_currency.toFixed(2) : 'N/A';
                 const isPositive = change24h !== 'N/A' && parseFloat(change24h) >= 0;
                 const changeClass = isPositive ? 'positive' : 'negative';
-                const arrowIcon = isPositive ? 'images/arrow-up.png' : 'images/arrow-down.png'; // Assuming you have these icons
+                // Assuming you have arrow-up.png and arrow-down.png in your images folder
+                const arrowIcon = isPositive ? 'images/arrow-up.png' : 'images/arrow-down.png';
 
                 const cryptoCard = `
                     <div class="crypto-card">
                         <div class="coin-header">
                             <img src="${coin.image}" alt="${coin.name} icon" class="coin-icon">
                             <span class="coin-name">${coin.name}</span>
-                            <span class="coin-symbol">${coin.symbol}</span>
+                            <span class="coin-symbol">${coin.symbol.toUpperCase()}</span>
                         </div>
                         <div class="current-price">$${coin.current_price.toLocaleString()}</div>
                         <div class="price-change ${changeClass}">
@@ -105,11 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initial fetch and render
-    fetchCryptoPrices();
+    // Call fetchCryptoPrices only if on index.html (or a page with the carousel)
+    if (cryptoCarousel) {
+        fetchCryptoPrices();
+        setInterval(fetchCryptoPrices, 60000); // Update every minute
+    }
 
-    // Update prices every 60 seconds (CoinGecko rate limit is 50-100 calls/minute)
-    setInterval(fetchCryptoPrices, 60000); // 60,000 ms = 1 minute
 
     // --- Simple Smooth Scrolling for Nav Links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             // Handle mobile menu close if applicable
-            if (mobileNavMenu.classList.contains('open')) {
+            if (mobileNavMenu && mobileNavMenu.classList.contains('open')) {
                 hamburger.classList.remove('open');
                 mobileNavMenu.classList.remove('open');
                 document.body.classList.remove('no-scroll');
@@ -128,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                const headerOffset = document.querySelector('.header').offsetHeight; // Height of fixed header
+                const headerOffset = document.querySelector('.header') ? document.querySelector('.header').offsetHeight : 0; // Check if header exists
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20; // -20 for extra space
 
@@ -139,4 +142,76 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+    // --- Demo Login Logic ---
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const email = loginForm.email.value;
+            const password = loginForm.password.value;
+            const errorMessage = document.getElementById('loginErrorMessage');
+
+            // Demo Credentials
+            const demoEmail = 'demo@cryptowealth.com';
+            const demoPassword = 'password123';
+
+            if (email === demoEmail && password === demoPassword) {
+                // Successful login
+                localStorage.setItem('loggedInUser', 'Demo User'); // Store a simple flag
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            } else {
+                // Failed login
+                errorMessage.textContent = 'Invalid email or password. Please try again.';
+            }
+        });
+    }
+
+    // --- Dashboard Specific Logic (for dashboard.html) ---
+    const dashboardSection = document.getElementById('dashboardSection');
+    if (dashboardSection) {
+        const userNameElement = document.getElementById('userName');
+        const logoutButton = document.getElementById('logoutButton');
+        const portfolioValue = document.getElementById('portfolioValue');
+        const assetList = document.getElementById('assetList');
+
+        const loggedInUser = localStorage.getItem('loggedInUser');
+
+        if (!loggedInUser) {
+            // If not logged in, redirect to login page
+            window.location.href = 'login.html';
+            return;
+        }
+
+        userNameElement.textContent = loggedInUser;
+
+        // Dummy Portfolio Data
+        const dummyPortfolio = {
+            totalValue: 50000.75, // USD
+            assets: [
+                { name: 'Bitcoin', symbol: 'BTC', amount: 0.5, value: 35000 },
+                { name: 'Ethereum', symbol: 'ETH', amount: 5, value: 15000 },
+                { name: 'Cardano', symbol: 'ADA', amount: 1000, value: 300 },
+                { name: 'Dogecoin', symbol: 'DOGE', amount: 2000, value: 150 }
+            ]
+        };
+
+        portfolioValue.textContent = `$${dummyPortfolio.totalValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+        dummyPortfolio.assets.forEach(asset => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <span class="asset-name">${asset.name} (${asset.symbol.toUpperCase()})</span>
+                <span class="asset-value">$${asset.value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+            `;
+            assetList.appendChild(listItem);
+        });
+
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem('loggedInUser'); // Clear login flag
+            window.location.href = 'login.html'; // Redirect to login
+        });
+    }
 });
