@@ -2,77 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blog | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Crypto Wealth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="https://picsum.photos/40/40" alt="Crypto Wealth Logo">
-      <span>CRYPTO WEALTH</span>
+      <img src="https://picsum.photos/100/40?random=1" alt="Crypto Wealth Logo">
     </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-        <li><a href="careers.html">Careers</a></li>
-        <li><a href="legal.html">Legal</a></li>
-        <li><a href="risk.html">Risk</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="dashboard.html" class="nav-item">Dashboard</a>
+      <a href="news.html" class="nav-item">News</a>
+      <a href="faq.html" class="nav-item">FAQ</a>
+      <a href="blog.html" class="nav-item active">Blog</a>
+      <a href="legal.html" class="nav-item">Legal</a>
+      <a href="risk.html" class="nav-item">Risk</a>
+      <a href="contact.html" class="nav-item">Contact</a>
     </nav>
-    <div class="auth">
-      <a href="login.html" class="btn btn-login">Login</a>
-      <a href="signup.html" class="btn btn-signup">Sign Up</a>
+    <div class="auth-buttons">
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
     </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
+
   <main>
-    <div class="blog-list">
-      <div class="blog-card">
-        <img src="https://picsum.photos/400/200?random=4" alt="Blog Post 1">
-        <div class="blog-meta">May 2025 • By Crypto Wealth Team</div>
-        <h3>How to Start Investing in Crypto</h3>
-        <p>
-          New to crypto? Learn how to set up your wallet, understand blockchain basics, and make your first investment safely. Our beginner’s guide covers all you need to know.
-        </p>
-        <a href="#">Read More</a>
+    <section class="blog-section">
+      <h2>Our Blog</h2>
+      <div class="blog-post">
+        <h3>The Future of Bitcoin in 2025</h3>
+        <p>Published on May 25, 2025</p>
+        <p>Bitcoin continues to dominate the crypto market. Here's what to expect this year...</p>
+        <a href="#" class="btn secondary">Read More</a>
       </div>
-      <div class="blog-card">
-        <img src="https://picsum.photos/400/200?random=5" alt="Blog Post 2">
-        <div class="blog-meta">May 2025 • By Jane Doe</div>
-        <h3>Security Tips for Crypto Investors</h3>
-        <p>
-          Discover the best ways to protect your assets, avoid scams, and keep your crypto safe from hackers. Learn about hardware wallets, 2FA, and more.
-        </p>
-        <a href="#">Read More</a>
+      <div class="blog-post">
+        <h3>Understanding Ethereum's Latest Upgrade</h3>
+        <p>Published on May 20, 2025</p>
+        <p>Ethereum's recent upgrade promises faster transactions and lower fees...</p>
+        <a href="#" class="btn secondary">Read More</a>
       </div>
-      <div class="blog-card">
-        <img src="https://picsum.photos/400/200?random=6" alt="Blog Post 3">
-        <div class="blog-meta">April 2025 • By John Smith</div>
-        <h3>Understanding DeFi and Yield Farming</h3>
-        <p>
-          What is DeFi? How can you earn passive income with yield farming and staking? We break down the latest trends in decentralized finance.
-        </p>
-        <a href="#">Read More</a>
-      </div>
-    </div>
+    </section>
   </main>
+
   <footer>
-    <div>
-      <p>&copy; 2025 Crypto Wealth. All rights reserved.</p>
-      <p>
-        Contact: <a href="mailto:info@cryptowealth.com">info@cryptowealth.com</a> |
-        WhatsApp: <a href="https://wa.me/2349035924358" target="_blank">+2349035924358</a>
-      </p>
-      <p>
-        <a href="legal.html">Legal</a> | <a href="risk.html">Risk</a> | <a href="faq.html">FAQ</a>
-      </p>
+    <div class="footer-links">
+      <a href="risk.html">Risk Disclosure</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="blog.html">Blog</a> |
+      <a href="contact.html">Contact</a>
     </div>
+    <div class="social-links">
+      <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> |
+      <a href="https://twitter.com/cryptowealth" target="_blank">Twitter</a>
+    </div>
+    <p>© 2025 Crypto Wealth. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
-</html>
+  </html>
