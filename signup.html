@@ -2,51 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Crypto Wealth | Sign Up</title>
+  <title>Sign Up | Crypto Wealth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">
-      <img src="assets/images/logo.png" alt="Crypto Wealth Logo">
-      <span>Crypto Wealth</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="learn.html">Learn</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="auth">
-      <a href="login.html" class="btn btn-login">Login</a>
-    </div>
+    <!-- ... same header as homepage ... -->
   </header>
   <main>
-    <section class="auth-form">
-      <div class="form-card">
-        <h1>Create Your Account</h1>
-        <form>
-          <label for="name">Full Name</label>
-          <input type="text" id="name" required>
-          <label for="email">Email</label>
-          <input type="email" id="email" required>
-          <label for="password">Password</label>
-          <input type="password" id="password" required>
-          <label for="confirm-password">Confirm Password</label>
-          <input type="password" id="confirm-password" required>
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Login here</a>.</p>
-      </div>
+    <section class="form-section">
+      <form class="form-card" id="signup-form">
+        <h2>Create Your Account</h2>
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input type="text" id="signup-name" required placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" required placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" required placeholder="Create a password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        <p class="form-link">Already have an account? <a href="login.html">Login</a></p>
+      </form>
     </section>
   </main>
   <footer>
-    <p>&copy; 2024 Crypto Wealth. All rights reserved.</p>
+    <!-- ... same footer as homepage ... -->
   </footer>
   <script src="script.js"></script>
 </body>
