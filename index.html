@@ -3,42 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectSphere | Connect. Share. Inspire.</title>
+    <title>ConnectSphere | Your Social Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode"> <header>
+<body class="dark-mode"> <div class="background-overlay"></div> <header>
         <div class="logo">ConnectSphere</div>
         <div class="header-actions">
             <button class="icon-button" id="darkModeToggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-sun"></i> </button>
-            <button class="icon-button" aria-label="New Message">
+            <a href="messages.html" class="icon-button" aria-label="Messages">
                 <i class="fas fa-paper-plane"></i>
-            </button>
+            </a>
         </div>
     </header>
 
-    <main>
-        <section class="feed" id="postFeed">
-            <div class="loading-spinner">
-                <i class="fas fa-spinner fa-spin"></i> Loading...
-            </div>
-        </section>
-
-        <section class="profile-preview">
-            <img src="https://source.unsplash.com/random/120x120/?person,profile-picture,abstract" alt="Your Profile Picture" class="profile-pic">
-            <h2 id="profileName">Your Name Here</h2>
-            <p class="bio" id="profileBio">Dreamer, Creator, Explorer. Sharing my journey and connecting with amazing people.</p>
-            <div class="profile-stats">
-                <div><strong id="followersCount">150</strong> <small>Followers</small></div>
-                <div><strong id="followingCount">200</strong> <small>Following</small></div>
-                <div><strong id="postsCount">50</strong> <small>Posts</small></div>
-            </div>
-            <button class="action-button view-profile-btn">View Full Profile</button>
-            <button class="action-button follow-button" data-user-id="your_user_id">
-                <i class="fas fa-user-plus"></i> Follow
-            </button>
-        </section>
+    <main id="appContent">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading awesome content...
+        </div>
     </main>
 
     <button class="fab" aria-label="Create new post">
