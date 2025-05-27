@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 900px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.last-updated {
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background-color: #e8f5e9; /* Light green */
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.summary-card h2 {
+    color: #28a745; /* Green */
+    margin: 0;
+    font-size: 2em;
+}
+
+.portfolio-list {
+    margin-top: 20px;
+}
+
+.portfolio-list h3 {
+    color: #34495e;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #555;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.positive {
+    color: #28a745; /* Green for positive change */
+    font-weight: bold;
+}
+
+.negative {
+    color: #dc3545; /* Red for negative change */
+    font-weight: bold;
+}
+
+.data-source {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: #999;
+}
