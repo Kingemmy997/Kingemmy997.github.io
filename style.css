@@ -1,261 +1,431 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6; /* A very light, calming grey */
-    color: #333;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
-    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+:root {
+    /* Base colors for dark mode */
+    --background-color: #1a1a1a;
+    --card-background: #2a2a2a;
+    --text-color: #e0e0e0;
+    --text-color-light: #b0b0b0;
+    --border-color: #3a3a3a;
+    --primary-accent: #6a8aff; /* A vibrant blue/purple */
+    --secondary-accent: #f39c12; /* Warm accent for profile */
+    --red-alert: #e74c3c; /* For notifications/badges */
+    --green-success: #27ae60;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    /* Light mode variables (will be overridden by .light-mode) */
+    --light-background-color: #f4f7f6;
+    --light-card-background: #ffffff;
+    --light-text-color: #333;
+    --light-text-color-light: #777;
+    --light-border-color: #e0e0e0;
+    --light-shadow-color: rgba(0, 0, 0, 0.08);
 }
 
+/* Light mode overrides */
+body.light-mode {
+    --background-color: var(--light-background-color);
+    --card-background: var(--light-card-background);
+    --text-color: var(--light-text-color);
+    --text-color-light: var(--light-text-color-light);
+    --border-color: var(--light-border-color);
+    --shadow-color: var(--light-shadow-color);
+    box-shadow: 0 0 15px var(--light-shadow-color) inset; /* Subtle inner shadow for light mode */
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
 header {
-    background-color: #fff;
-    color: #2c3e50; /* Dark blue-grey for a professional look */
-    padding: 15px;
+    background-color: var(--card-background);
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Subtle shadow */
+    box-shadow: 0 2px 8px var(--shadow-color);
     position: sticky;
     top: 0;
-    z-index: 1000; /* Ensure header stays on top */
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-size: 1.6em;
-    font-weight: 700; /* Bolder for impact */
-    letter-spacing: -0.5px;
+    font-size: 1.8em;
+    font-weight: 800; /* Extra bold */
+    letter-spacing: -0.8px;
+    color: var(--primary-accent); /* Logo in accent color */
 }
 
-nav a {
-    color: #555;
-    text-decoration: none;
-    margin-left: 18px; /* Slightly more space */
-    padding: 8px 12px;
-    border-radius: 6px; /* Slightly more rounded */
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 0.95em;
+.header-actions .icon-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.3em;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.header-actions .icon-button:hover {
+    color: var(--primary-accent);
+    transform: scale(1.1);
 }
 
-nav a:hover {
-    background-color: #e9ecef; /* Light hover effect */
-    color: #2c3e50;
-}
-
-.badge {
-    background-color: #e74c3c; /* A vibrant red for notifications */
-    color: #fff;
-    border-radius: 50%;
-    padding: 4px 7px; /* Smaller padding */
-    font-size: 0.7em;
-    vertical-align: middle;
-    margin-left: 5px;
-    font-weight: bold;
-    min-width: 15px; /* Ensure badge looks good for single digits */
-    text-align: center;
-}
-
+/* Main Layout */
 main {
     padding: 20px;
-    max-width: 900px; /* Constrain content width for readability */
-    margin: 20px auto; /* Center the main content */
+    max-width: 960px; /* Wider content area */
+    margin: 20px auto 80px auto; /* Margin for bottom nav */
     display: grid;
-    gap: 25px; /* Space between feed and profile */
+    gap: 30px;
     grid-template-columns: 1fr; /* Single column for mobile */
+    flex-grow: 1; /* Allows main to take available space */
 }
 
-/* For larger screens, arrange side-by-side */
 @media (min-width: 768px) {
     main {
-        grid-template-columns: 2fr 1fr; /* Feed takes 2/3, profile 1/3 */
+        grid-template-columns: 2fr 1fr; /* Feed 2/3, Profile 1/3 */
+        padding-bottom: 20px; /* Remove extra bottom margin on desktop */
     }
 }
 
-.feed {
-    margin-bottom: 25px; /* Space before profile preview on mobile */
+/* Loading Spinner */
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2em;
+    color: var(--text-color-light);
+}
+.loading-spinner .fa-spin {
+    margin-right: 10px;
+    color: var(--primary-accent);
 }
 
+/* Post Cards */
 .post {
-    background-color: #fff;
-    border-radius: 10px; /* More rounded corners for a softer look */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.07); /* More pronounced, but still subtle shadow */
+    background-color: var(--card-background);
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 6px 15px var(--shadow-color); /* Deeper shadow */
     margin-bottom: 25px;
     overflow: hidden;
-    transition: transform 0.2s ease; /* Slight hover effect */
+    border: 1px solid var(--border-color); /* Subtle border */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .post:hover {
-    transform: translateY(-3px); /* Lift slightly on hover */
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 10px 20px var(--shadow-color);
 }
 
 .post-header {
-    padding: 15px 20px; /* More horizontal padding */
+    padding: 18px 25px; /* More padding */
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #f0f0f0; /* Lighter border */
+    border-bottom: 1px solid var(--border-color);
 }
 
 .avatar {
-    width: 48px; /* Slightly larger avatar */
-    height: 48px;
+    width: 55px; /* Larger avatar */
+    height: 55px;
     border-radius: 50%;
-    margin-right: 12px;
+    margin-right: 15px;
     object-fit: cover;
-    border: 2px solid #3498db; /* A pop of color */
+    border: 3px solid var(--primary-accent); /* Accent border */
+    box-shadow: 0 0 0 2px var(--card-background); /* Inner ring effect */
 }
 
 .user-info strong {
     display: block;
-    font-weight: 600; /* Slightly less bold than default bold */
-    color: #222;
-    font-size: 1.05em;
+    font-weight: 700;
+    color: var(--text-color);
+    font-size: 1.15em;
+    margin-bottom: 2px;
 }
 
 .user-info span {
     display: block;
-    font-size: 0.85em;
-    color: #888;
+    font-size: 0.88em;
+    color: var(--text-color-light);
 }
 
 .post-content {
-    padding: 15px 20px;
+    padding: 20px 25px;
 }
 
 .post-content img {
     width: 100%;
     display: block;
-    border-radius: 8px; /* Rounded image corners */
-    margin-bottom: 15px;
+    border-radius: 12px; /* Rounded image corners */
+    margin-bottom: 18px;
     object-fit: cover;
-    max-height: 450px; /* Max height for consistent look */
-    filter: brightness(0.98); /* Slight darkening for depth */
+    max-height: 500px;
+    transition: transform 0.3s ease;
+}
+.post-content img:hover {
+    transform: scale(1.01); /* Subtle zoom on hover */
 }
 
 .post-content p {
     margin-bottom: 15px;
-    color: #444;
+    color: var(--text-color);
     font-size: 1.05em;
+    line-height: 1.7;
 }
 
 .post-actions {
     margin-top: 15px;
     display: flex;
-    justify-content: space-around; /* Distribute buttons evenly */
-    padding-top: 10px;
-    border-top: 1px solid #f0f0f0;
+    justify-content: space-around;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
 }
 
 .post-actions button {
     background: none;
-    border: none; /* No border for a cleaner look */
-    color: #666;
-    padding: 10px 15px;
-    border-radius: 25px; /* Pill-shaped buttons */
+    border: none;
+    color: var(--text-color-light);
+    padding: 10px 18px;
+    border-radius: 30px; /* More pill-shaped */
     cursor: pointer;
     font-size: 1em;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     font-weight: 500;
 }
 
 .post-actions button:hover {
-    background-color: #f8f9fa; /* Very light hover */
-    color: #333;
+    background-color: rgba(var(--primary-accent-rgb), 0.1); /* Lighter accent hover */
+    color: var(--primary-accent);
+    transform: translateY(-2px);
 }
 
-/* Icon styling (assuming simple text-based icons for now) */
-.icon {
-    font-size: 1.2em;
-    line-height: 1; /* Align with text */
-    margin-right: 2px;
+.post-actions button.liked {
+    color: var(--red-alert); /* Red for liked posts */
+}
+.post-actions button.liked .fa-heart {
+    animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Fun bounce animation */
+}
+@keyframes bounceIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
 }
 
-/* Specific icon colors (optional, for visual distinction) */
-.post-actions button:first-child .icon { color: #e74c3c; } /* Heart */
-.post-actions button:nth-child(2) .icon { color: #3498db; } /* Comment */
-.post-actions button:nth-child(3) .icon { color: #27ae60; } /* Share */
 
-
+/* Profile Preview */
 .profile-preview {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.07);
-    padding: 25px;
+    background-color: var(--card-background);
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow-color);
+    padding: 30px;
     text-align: center;
-    position: sticky; /* Keeps profile preview visible on scroll */
-    top: 90px; /* Adjust based on header height + some margin */
-    align-self: start; /* Sticks to the top of its grid cell */
+    position: sticky;
+    top: 90px;
+    align-self: start;
+    border: 1px solid var(--border-color);
 }
 
 .profile-pic {
-    width: 90px; /* Larger profile pic */
-    height: 90px;
+    width: 100px; /* Larger profile pic */
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    border: 3px solid #f39c12; /* A warm accent color */
+    margin-bottom: 18px;
+    border: 4px solid var(--secondary-accent); /* Warm accent for profile */
+    box-shadow: 0 0 0 3px var(--card-background);
 }
 
 .profile-preview h2 {
-    margin-top: 5px;
-    margin-bottom: 8px;
-    color: #222;
-    font-weight: 600;
-    font-size: 1.4em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.6em;
 }
 
 .profile-preview .bio {
-    color: #777;
-    margin-bottom: 20px;
-    font-size: 0.95em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+    font-size: 0.98em;
     line-height: 1.5;
 }
 
 .profile-stats {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
 }
 
 .profile-stats div {
-    font-size: 0.95em;
-    color: #555;
+    font-size: 0.98em;
+    color: var(--text-color-light);
+    text-align: center;
 }
 
 .profile-stats strong {
     display: block;
     font-weight: 700;
-    color: #333;
-    font-size: 1.1em;
-    margin-bottom: 3px;
+    color: var(--primary-accent); /* Accent for stats */
+    font-size: 1.2em;
+    margin-bottom: 5px;
 }
 
-.view-profile-btn {
-    background-color: #3498db; /* A vibrant blue */
+.action-button {
+    background-color: var(--primary-accent);
     color: #fff;
     border: none;
     padding: 12px 25px;
-    border-radius: 25px; /* Pill button */
+    border-radius: 30px;
     cursor: pointer;
     font-size: 1em;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2); /* Subtle button shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(var(--primary-accent-rgb), 0.3);
+    width: 100%;
+    margin-bottom: 10px; /* Space between buttons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.action-button:hover {
+    background-color: color-mix(in srgb, var(--primary-accent) 90%, black); /* Slightly darker on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(var(--primary-accent-rgb), 0.4);
 }
 
-.view-profile-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px); /* Slight lift on hover */
+.follow-button {
+    background-color: transparent;
+    color: var(--primary-accent);
+    border: 2px solid var(--primary-accent);
+    box-shadow: none;
+}
+.follow-button:hover {
+    background-color: rgba(var(--primary-accent-rgb), 0.1);
+    transform: translateY(-3px);
+}
+.follow-button.following {
+    background-color: var(--green-success);
+    color: #fff;
+    border-color: var(--green-success);
+}
+.follow-button.following:hover {
+    background-color: color-mix(in srgb, var(--green-success) 90%, black);
+    border-color: color-mix(in srgb, var(--green-success) 90%, black);
 }
 
-footer {
+
+/* Floating Action Button (FAB) */
+.fab {
+    position: fixed;
+    bottom: 90px; /* Above bottom nav */
+    right: 20px;
+    background-color: var(--primary-accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(var(--primary-accent-rgb), 0.4);
+    cursor: pointer;
+    z-index: 1001;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.fab:hover {
+    background-color: color-mix(in srgb, var(--primary-accent) 90%, black);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 20px rgba(var(--primary-accent-rgb), 0.5);
+}
+
+/* Bottom Mobile Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-background);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 8px var(--shadow-color);
+    z-index: 999;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color-light);
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+    flex: 1; /* Distribute items evenly */
+}
+
+.nav-item i {
+    font-size: 1.4em;
+    margin-bottom: 4px;
+    transition: transform 0.2s ease;
+}
+
+.nav-item span {
+    display: block;
+}
+
+.nav-item.active {
+    color: var(--primary-accent);
+}
+.nav-item.active i {
+    transform: translateY(-3px); /* Subtle active animation */
+}
+.nav-item:not(.active):hover {
+    color: var(--text-color);
+}
+
+.nav-item .badge {
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    background-color: var(--red-alert);
+    color: #fff;
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 0.65em;
+    font-weight: bold;
+    min-width: 12px;
     text-align: center;
-    padding: 25px;
-    font-size: 0.8em;
-    color: #999;
-    margin-top: 30px;
-    border-top: 1px solid #eee;
+    line-height: 1; /* For better vertical alignment */
+}
+
+/* Utilities for color-mix */
+.light-mode {
+    --primary-accent-rgb: 106, 138, 255; /* RGB value for --primary-accent in light mode */
+    --green-success-rgb: 39, 174, 96;
+}
+.dark-mode {
+    --primary-accent-rgb: 106, 138, 255; /* RGB value for --primary-accent in dark mode */
+    --green-success-rgb: 39, 174, 96;
 }
