@@ -3,95 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConnectSphere</title>
+    <title>ConnectSphere | Connect. Share. Inspire.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
+<body class="dark-mode"> <header>
         <div class="logo">ConnectSphere</div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Explore</a>
-            <a href="#">Notifications <span class="badge">3</span></a>
-            <a href="#">Profile</a>
-        </nav>
+        <div class="header-actions">
+            <button class="icon-button" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-sun"></i> </button>
+            <button class="icon-button" aria-label="New Message">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </header>
 
     <main>
-        <section class="feed">
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://source.unsplash.com/random/50x50/?face,person" alt="User Avatar" class="avatar">
-                    <div class="user-info">
-                        <strong>Aisha Khan</strong>
-                        <span class="timestamp">5 minutes ago</span>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <img src="https://source.unsplash.com/random/600x400/?landscape,nature" alt="Post Image">
-                    <p>Exploring the beautiful landscapes of Nigeria! #travel #nigeria #adventure</p>
-                    <div class="post-actions">
-                        <button><i class="icon">❤️</i> 25</button>
-                        <button><i class="icon">💬</i> 5</button>
-                        <button><i class="icon">🔗</i> Share</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://source.unsplash.com/random/50x50/?portrait,man" alt="User Avatar" class="avatar">
-                    <div class="user-info">
-                        <strong>Chinedu Okoro</strong>
-                        <span class="timestamp">30 minutes ago</span>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>Just finished reading an amazing article about the tech scene in Lagos. So much innovation happening! #tech #lagos #innovation</p>
-                    <div class="post-actions">
-                        <button><i class="icon">👍</i> 18</button>
-                        <button><i class="icon">💬</i> 2</button>
-                        <button><i class="icon">🔗</i> Share</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://source.unsplash.com/random/50x50/?animal,cute" alt="User Avatar" class="avatar">
-                    <div class="user-info">
-                        <strong>Amara Eze</strong>
-                        <span class="timestamp">1 hour ago</span>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <img src="https://source.unsplash.com/random/600x400/?food,jollof" alt="Post Image">
-                    <p>Delicious jollof rice and plantain for lunch today! 😋 #foodie #nigerianfood #jollofrice</p>
-                    <div class="post-actions">
-                        <button><i class="icon">😍</i> 32</button>
-                        <button><i class="icon">💬</i> 8</button>
-                        <button><i class="icon">🔗</i> Share</button>
-                    </div>
-                </div>
+        <section class="feed" id="postFeed">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i> Loading...
             </div>
         </section>
 
         <section class="profile-preview">
-            <img src="https://source.unsplash.com/random/100x100/?person,profile" alt="Profile Picture" class="profile-pic">
-            <h2>Your Name</h2>
-            <p class="bio">A short, engaging bio about you.</p>
+            <img src="https://source.unsplash.com/random/120x120/?person,profile-picture,abstract" alt="Your Profile Picture" class="profile-pic">
+            <h2 id="profileName">Your Name Here</h2>
+            <p class="bio" id="profileBio">Dreamer, Creator, Explorer. Sharing my journey and connecting with amazing people.</p>
             <div class="profile-stats">
-                <div><strong>150</strong> Followers</div>
-                <div><strong>200</strong> Following</div>
-                <div><strong>50</strong> Posts</div>
+                <div><strong id="followersCount">150</strong> <small>Followers</small></div>
+                <div><strong id="followingCount">200</strong> <small>Following</small></div>
+                <div><strong id="postsCount">50</strong> <small>Posts</small></div>
             </div>
-            <button class="view-profile-btn">View Full Profile</button>
+            <button class="action-button view-profile-btn">View Full Profile</button>
+            <button class="action-button follow-button" data-user-id="your_user_id">
+                <i class="fas fa-user-plus"></i> Follow
+            </button>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 ConnectSphere</p>
-    </footer>
+    <button class="fab" aria-label="Create new post">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-nav="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="explore">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="notifications">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+            <span class="badge">3</span>
+        </a>
+        <a href="#" class="nav-item" data-nav="profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
