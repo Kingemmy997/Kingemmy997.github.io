@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Crypto Wealth</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Crypto Wealth Dashboard</h1>
+        <p class="last-updated">Last Updated: <%= lastUpdated %></p>
+
+        <div class="summary-card">
+            <h2>Total Portfolio Value: $<%= totalPortfolioValueUSD %> USD</h2>
+        </div>
+
+        <div class="portfolio-list">
+            <h3>Your Holdings</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Asset</th>
+                        <th>Amount</th>
+                        <th>Current Price (USD)</th>
+                        <th>Value (USD)</th>
+                        <th>24h Change (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% portfolioDetails.forEach(asset => { %>
+                        <tr>
+                            <td><%= asset.name %></td>
+                            <td><%= asset.amount %></td>
+                            <td>$<%= asset.currentPrice %></td>
+                            <td>$<%= asset.valueUSD %></td>
+                            <td class="<%= asset.change24h > 0 ? 'positive' : (asset.change24h < 0 ? 'negative' : '') %>">
+                                <%= asset.change24h %>%
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="data-source">Data provided by CoinGecko</p>
+    </div>
+</body>
+</html>
