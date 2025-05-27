@@ -3,47 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Crypto Wealth</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>ConnectSphere</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>My Crypto Wealth Dashboard</h1>
-        <p class="last-updated">Last Updated: <%= lastUpdated %></p>
+    <header>
+        <div class="logo">ConnectSphere</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+            <a href="#">Notifications <span class="badge">3</span></a>
+            <a href="#">Profile</a>
+        </nav>
+    </header>
 
-        <div class="summary-card">
-            <h2>Total Portfolio Value: $<%= totalPortfolioValueUSD %> USD</h2>
-        </div>
+    <main>
+        <section class="feed">
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://source.unsplash.com/random/50x50/?face,person" alt="User Avatar" class="avatar">
+                    <div class="user-info">
+                        <strong>Aisha Khan</strong>
+                        <span class="timestamp">5 minutes ago</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <img src="https://source.unsplash.com/random/600x400/?landscape,nature" alt="Post Image">
+                    <p>Exploring the beautiful landscapes of Nigeria! #travel #nigeria #adventure</p>
+                    <div class="post-actions">
+                        <button><i class="icon">❤️</i> 25</button>
+                        <button><i class="icon">💬</i> 5</button>
+                        <button><i class="icon">🔗</i> Share</button>
+                    </div>
+                </div>
+            </div>
 
-        <div class="portfolio-list">
-            <h3>Your Holdings</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Asset</th>
-                        <th>Amount</th>
-                        <th>Current Price (USD)</th>
-                        <th>Value (USD)</th>
-                        <th>24h Change (%)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% portfolioDetails.forEach(asset => { %>
-                        <tr>
-                            <td><%= asset.name %></td>
-                            <td><%= asset.amount %></td>
-                            <td>$<%= asset.currentPrice %></td>
-                            <td>$<%= asset.valueUSD %></td>
-                            <td class="<%= asset.change24h > 0 ? 'positive' : (asset.change24h < 0 ? 'negative' : '') %>">
-                                <%= asset.change24h %>%
-                            </td>
-                        </tr>
-                    <% }); %>
-                </tbody>
-            </table>
-        </div>
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://source.unsplash.com/random/50x50/?portrait,man" alt="User Avatar" class="avatar">
+                    <div class="user-info">
+                        <strong>Chinedu Okoro</strong>
+                        <span class="timestamp">30 minutes ago</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Just finished reading an amazing article about the tech scene in Lagos. So much innovation happening! #tech #lagos #innovation</p>
+                    <div class="post-actions">
+                        <button><i class="icon">👍</i> 18</button>
+                        <button><i class="icon">💬</i> 2</button>
+                        <button><i class="icon">🔗</i> Share</button>
+                    </div>
+                </div>
+            </div>
 
-        <p class="data-source">Data provided by CoinGecko</p>
-    </div>
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://source.unsplash.com/random/50x50/?animal,cute" alt="User Avatar" class="avatar">
+                    <div class="user-info">
+                        <strong>Amara Eze</strong>
+                        <span class="timestamp">1 hour ago</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <img src="https://source.unsplash.com/random/600x400/?food,jollof" alt="Post Image">
+                    <p>Delicious jollof rice and plantain for lunch today! 😋 #foodie #nigerianfood #jollofrice</p>
+                    <div class="post-actions">
+                        <button><i class="icon">😍</i> 32</button>
+                        <button><i class="icon">💬</i> 8</button>
+                        <button><i class="icon">🔗</i> Share</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-preview">
+            <img src="https://source.unsplash.com/random/100x100/?person,profile" alt="Profile Picture" class="profile-pic">
+            <h2>Your Name</h2>
+            <p class="bio">A short, engaging bio about you.</p>
+            <div class="profile-stats">
+                <div><strong>150</strong> Followers</div>
+                <div><strong>200</strong> Following</div>
+                <div><strong>50</strong> Posts</div>
+            </div>
+            <button class="view-profile-btn">View Full Profile</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 ConnectSphere</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
